@@ -267,12 +267,12 @@ main header {
 
 /* Estilizando a barra de rolagem vertical */
 .form form textarea::-webkit-scrollbar {
-  width: 10px; /* Largura da barra de rolagem */
+    width: 10px; /* Largura da barra de rolagem */
 }
 
 .form form textarea::-webkit-scrollbar-thumb {
-  background-color: #000; /* Cor do thumb (ponteiro) da barra de rolagem */
-  border-radius: 5px; /* Borda arredondada do thumb */
+    background-color: #000; /* Cor do thumb (ponteiro) da barra de rolagem */
+    border-radius: 5px; /* Borda arredondada do thumb */
 }
 
 .form form input:focus, .form form textarea:focus {
@@ -490,13 +490,24 @@ p.nome{
     z-index: 2
 }
 
-.submenu:hover .submenu-conteudo, a {
+.submenu:hover .submenu-conteudo {
     display: block;
-    padding: 1rem;
     text-decoration: none;
     width:17rem;
     font-size: 1.5rem;
     border-radius: var(--default-border-radius);
+}
+
+.submenu-conteudo li form{
+    transition: .15s;
+    border-radius: var(--default-border-radius);
+}
+
+.submenu-conteudo li form:hover{
+    background: #ccc;
+}
+.submenu-conteudo li{
+    padding: 0.1rem;
 }
 
 .submenu span {

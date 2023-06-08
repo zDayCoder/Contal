@@ -1,5 +1,6 @@
 package model;
 
+import java.io.StringReader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +28,13 @@ public class Contact {
 
     }
 
-    public static List<Contact> getAllContacts() throws Exception {
+    public static List<Contact> getAllContacts(String user_id) throws Exception {
         List<Contact> contacts = new ArrayList<>();
         try {
             Connection con = Databases.getConnection();
-            String query = "SELECT * FROM contacts";
+            String query = "SELECT * FROM contacts where user_id = ?";
             PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setString(1, user_id);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -79,14 +81,15 @@ public class Contact {
         return null;
     }
 
-    public static List<Contact> searchContactsByPhone(String phone) throws Exception {
+    public static List<Contact> searchContactsByPhone(String phone, String userMail) throws Exception {
         List<Contact> contacts = new ArrayList<>();
 
         try {
             Connection con = Databases.getConnection();
-            String query = "SELECT * FROM contacts WHERE telephone LIKE ?";
+            String query = "SELECT * FROM contacts WHERE telephone LIKE ? AND user_id = ?";
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, "%" + phone + "%");
+            stmt.setString(2, userMail);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -107,24 +110,25 @@ public class Contact {
         return contacts;
     }
 
-    public static Contact getContactByTelephone(String telephone) throws Exception {
+    public static Contact getContactByTelephone(String telephone, String userMail) throws Exception {
         Contact contact = null;
 
         try {
             Connection con = Databases.getConnection();
-            String sql = "SELECT * FROM contacts WHERE telephone=?";
+            String sql = "SELECT * FROM contacts WHERE telephone = ? AND user_id = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, telephone);
+            stmt.setString(2, userMail);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                long rowId = rs.getLong("rowid");
                 String name = rs.getString("name");
                 String description = rs.getString("description");
                 String email = rs.getString("email");
+                String telephone2 = rs.getString("telephone");
                 String address = rs.getString("address");
 
-                contact = new Contact(rowId, name, description, telephone, email, address);
+                contact = new Contact(name, description, telephone2, email, address);
             }
             rs.close();
             stmt.close();
@@ -196,10 +200,10 @@ public class Contact {
                     + "VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(insertQuery);
             stmt.setString(1, name);
-            stmt.setString(2, description);
+            stmt.setCharacterStream(2, new StringReader(description), description.length());
             stmt.setString(3, telephone);
             stmt.setString(4, email);
-            stmt.setString(5, address);
+            stmt.setCharacterStream(5, new StringReader(address), address.length());
             stmt.setString(6, userMail);
             stmt.execute();
             stmt.close();
@@ -209,21 +213,41 @@ public class Contact {
         }
     }
 
-    public static boolean isTelephoneExists(String telephone) throws Exception {
-        int count;
+    public static void deleteContact(String telephone, String userMail) throws Exception {
+
+        // Deletar o contato pelo telefone
         try (Connection con = Databases.getConnection()) {
-            String sql = "SELECT COUNT(*) FROM contacts WHERE telephone=?";
-            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            // Deletar o contato pelo telefone
+            String deleteQuery = "DELETE FROM contacts WHERE telephone = ? AND user_id = ?";
+            try (PreparedStatement stmt = con.prepareStatement(deleteQuery)) {
                 stmt.setString(1, telephone);
-                try (ResultSet rs = stmt.executeQuery()) {
-                    rs.next();
-                    count = rs.getInt(1);
-                }
-                stmt.close();
+                stmt.setString(2, userMail);
+                stmt.executeUpdate();
             }
-            con.close();
+
+        } catch (SQLException e) {
+            // Tratar exceção
         }
-        return count > 0;
+    }
+
+    public static void updateContact(String telephone, String name, String description, String email, String address, String userMail) throws Exception {
+        // Atualizar o contato pelo telefone
+        try (Connection con = Databases.getConnection()) {
+            // Atualizar o contato pelo telefone
+            String updateQuery = "UPDATE contacts SET name = ?, description = ?, email = ?, address = ? WHERE telephone = ? AND user_id = ?";
+            try (PreparedStatement stmt = con.prepareStatement(updateQuery)) {
+                stmt.setString(1, name);
+                stmt.setString(2, description);
+                stmt.setString(3, email);
+                stmt.setString(4, address);
+                stmt.setString(5, telephone);
+                stmt.setString(6, userMail);
+                stmt.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            // Tratar exceção
+        }
     }
 
     public static boolean isEmailExists(String email) throws Exception {
@@ -243,24 +267,7 @@ public class Contact {
         return count > 0;
     }
 
-    /**
-     * public static void updateUser(String login, String name, String role,
-     * String password) throws Exception{ Connection con =
-     * AppListener.getConnection(); String sql = "UPDATE users SET name=?,
-     * role=?, password_hash=? WHERE login=?"; PreparedStatement stmt =
-     * con.prepareStatement(sql); stmt.setString(1, name); stmt.setString(2,
-     * role); stmt.setString(3, AppListener.getMd5Hash(password));
-     * stmt.setString(4, login); stmt.execute(); stmt.close(); con.close(); }
-     *
-     * public static void changePassword(String email, String password) throws
-     * Exception { Connection con = Databases.getConnection(); String sql =
-     * "UPDATE users SET passwordHash = ? WHERE email = ?"; PreparedStatement
-     * stmt = con.prepareStatement(sql); stmt.setString(1,
-     * Databases.getMd5Hash(password)); stmt.setString(2, email);
-     * stmt.execute(); stmt.close(); con.close(); }*
-     */
-    public Contact(long rowId, String name, String description, String telephone, String email, String address) {
-        this.rowId = rowId;
+    public Contact(String name, String description, String telephone, String email, String address) {
         this.name = name;
         this.description = description;
         this.telephone = telephone;

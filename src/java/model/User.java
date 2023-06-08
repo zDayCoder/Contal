@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.*;
-import java.util.ArrayList;
 import services.Databases;
 
 public class User {

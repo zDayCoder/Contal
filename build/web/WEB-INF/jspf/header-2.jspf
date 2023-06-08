@@ -1,4 +1,5 @@
 <%-- any content can be specified here e.g.: --%>
+<%@page import="model.User"%>
 <%@ page pageEncoding="UTF-8" %>
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -8,33 +9,60 @@
 <script src="https://kit.fontawesome.com/5b3bb07e17.js" crossorigin="anonymous"></script>
 
 <nav class="navbar-2">
-<header class="head-2">
-    
-    
-    <ul class="menu-perfil">       
+    <header class="head-2">
 
-        <li class="item1"> <button>
+
+        <ul class="menu-perfil">       
+
+            <li class="item1"> <button>
                     <a href="./workspace" >
                         <img src="./assets/contal.png" alt="Logo-2" >
                     </a>
                 </button></li>
-                    
-        <li class="item2">
-            <span><form method="post"><input type="text" id="search" name="filter" placeholder ="Pesquise agora..."></form></span>
-            
-        </li>
-        <li class="item3"><a href="./new_contact"><button class="add-button"><i class="fa-solid fa-plus"></i>Adicionar Contato</button></a></li>
-        <li>            
-            <div class="submenu">
-                <span class="special-li"><span class ="button-icon"><i class="fa-solid fa-chevron-down"></i></span>
-                    <img src="./assets/usuario2.jpg" alt="alt"/></span> 
-                <ul class="submenu-conteudo">
-                    <li><a href="" >Perfil</a></li>
-                    <li><a href="" >Configurações</a></li>
-                    <li><a href="" >Sair</a></li>
-                </ul>
-            </div>
-        </li>    
-    </ul>
-</header>
+
+            <li class="item2">
+                <!--<span><form method="post"><input type="text" id="search" name="filter" placeholder ="Buscar por e-mail ou por telefone"></form></span>-->
+                <span><form method="post">
+                        <div class="search-radios">
+                            <label>
+                                <input type="radio" name="filterType" value="t_email" checked>
+                                Email
+                            </label>
+                            <label>
+                                <input type="radio" name="filterType" value="t_phone">
+                                Telefone
+                            </label>
+                        </div>
+
+                        <input type="text" id="searchInput" name="filter" placeholder="Digite o email ou número de telefone">
+                    </form></span>
+                
+            </li>
+            <li class="item3"><a href="./new_contact"><button class="add-button"><i class="fa-solid fa-plus"></i>Adicionar Contato</button></a></li>
+            <li>            
+                <div class="submenu">
+                    <span class="special-li"><span class ="button-icon"><i class="fa-solid fa-chevron-down"></i></span>
+                            <%
+                                if (request.getSession().getAttribute("user") != null) {
+                                    User u = (User) request.getSession().getAttribute("user");
+                                    String firstName = u.getName().split(" ")[0];
+                            %>
+                            <%=firstName%>
+                            <%}%>
+                        <img src="./assets/usuario2.jpg" alt="alt"/></span> 
+                    <ul class="submenu-conteudo">
+                        <li><form method="post"><button value="profile" name="menu">Perfil</button></form></li>
+                        <li><form method="post"><button value="settings" name="menu">Configurações</button></form></li>
+                        <li><form method="post"><button value="logout" name="menu">Sair</button></form></li>
+                    </ul>
+
+                    <style>
+
+
+
+                    </style>
+                </div>
+            </li>    
+        </ul>
+    </header>
 </nav>

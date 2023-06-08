@@ -19,6 +19,15 @@ public class Databases implements ServletContextListener {
 
     public static Connection getConnection() throws Exception {
         Class.forName(CLASS_NAME);
-        return (Connection) DriverManager.getConnection(URL);
+
+        Connection connection = DriverManager.getConnection(URL);
+
+        // Define a codificação UTF-8 para a conexão
+        connection.createStatement().execute("PRAGMA encoding = 'UTF-8';");
+        connection.createStatement().execute("PRAGMA foreign_keys = ON;");
+
+        return connection;
+
     }
+
 }
