@@ -1,0 +1,40 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700&display=swap"
+      rel="stylesheet">
+<script src="https://kit.fontawesome.com/5b3bb07e17.js" crossorigin="anonymous"></script>
+
+<nav class="navbar-2">
+<header class="head-2">
+    
+    
+    <ul class="menu-perfil">       
+
+        <li class="item1"> <button>
+                    <a href="./workspace" >
+                        <img src="./assets/contal.png" alt="Logo-2" >
+                    </a>
+                </button></li>
+                    
+        <li class="item2">
+            <span><input type="text" id="search" placeholder ="Pesquise agora..."></span>
+            
+        </li>
+        <li class="item3"><button class="add-button"><i class="fa-solid fa-plus"></i>Adicionar Contato</button></li>
+        <li>            
+            <div class="submenu">
+                <span class="special-li"><span class ="button-icon"><i class="fa-solid fa-chevron-down"></i></span>
+                    <img src="./assets/usuario2.jpg" alt="alt"/></span> 
+                <ul class="submenu-conteudo">
+                    <li><a href="" >Perfil</a></li>
+                    <li><a href="" >Configurações</a></li>
+                    <li><a href="" >Sair</a></li>
+                </ul>
+            </div>
+        </li>    
+    </ul>
+</header>
+</nav>

@@ -1,0 +1,561 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+:root {
+    font-size: 62.5%;
+    --default-border: 0.1rem solid rgba(0, 0, 0, 0.15);
+    --default-border-radius: 1.9rem;
+    --default-font-color:  #655;
+}
+
+/*Header1 /////////////////////////////////////////////////////////////////////////////*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 2.5rem;
+    background: transparent;
+
+}
+
+.navbar .menu {
+    display: flex;
+    color: #333;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+    text-decoration: none;
+    font-size: 2rem;
+    color: #666;
+    text-decoration: underline;
+    font-weight:300;
+}
+.navbar .menu li{
+    margin-left: 4rem;
+}
+.navbar .menu a{
+    display:block;
+    padding: 1rem;
+    color:var(--default-font-color);
+
+
+}
+.navbar .menu a:hover{
+    color: #6A5ACD;
+}
+
+.navbar .logo img, button {
+    width: 100%;
+    height:7rem;
+    border: none;
+    background: transparent;
+}
+
+/*Index page ////////////////////////////////////////////////////////////////////////*/
+.body-gradient{
+    background: linear-gradient(rgba(255, 255, 255, 1) 5%, rgba(249, 251, 251, 1) 45%, rgba(230, 222, 246, 1) 87%);
+    font-family: Roboto;
+    font-size: 1.4rem;
+    overflow: hidden;
+    background-repeat: no-repeat;
+
+}
+.body-index {
+    background: linear-gradient(to right, rgba(230, 222, 246, 1) 5%, rgba(250, 249, 253, 1) 37%, rgba(249, 251, 251, 1) 45%, rgba(238, 234, 250, 1) 87%);
+    font-family: Roboto;
+    font-size: 1.4rem;
+    overflow: hidden;
+}
+
+.content {
+    display: grid;
+    grid-template-areas:
+        " . . . ."
+        " . hero  form ."
+        " . hero form  ."
+        ;
+    gap: 3.5rem;
+}
+
+.index-main {
+    grid-area: form;
+    position: relative;
+    width: 60rem;
+    height: 52rem;
+    border:none;
+    padding: 7rem 4.4rem;
+    border-radius: var(--default-border-radius);
+}
+
+.aside-index {
+    grid-area: hero;
+    background: transparent;
+}
+
+.aside-index img {
+    width: 100%;
+    max-width: 590px;
+    height: auto;
+    object-fit: contain;
+
+}
+
+
+main h2 {
+    color: #000000;
+    max-width: 43rem;
+    font-size: 3.6rem;
+    text-align: right;
+}
+
+main .actions {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+main .actions a {
+    font-size: 2.4rem;
+    text-decoration: none;
+    background: linear-gradient(to right,#6A5ACD, #EE82EE);
+    height: 3.5rem;
+    width: 50%;
+    border-radius: 1rem;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5.4rem;
+    margin-left: 20rem;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+main .actions a:hover{
+    transform: scale(1.1);
+    background: linear-gradient(to right, #6A5ACD, #EE82EE);
+}
+
+main .actions p{
+    font-size: 1.9rem;
+    padding-top: 3.5rem;
+
+}
+
+main .actions a+a {
+    background-color: #A0522D;
+    margin-top: 4.8rem;
+}
+
+main header {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .content {
+        grid-template-areas:
+            "."
+            "hero"
+            "form";
+        gap: 4rem;
+    }
+
+    main {
+        width: 100%;
+        padding: 2.8rem;
+    }
+
+    aside img {
+        max-width: 100%;
+    }
+
+    main h2 {
+        font-size: 2.8rem;
+        max-width: none;
+    }
+
+    main .actions a {
+        font-size: 2rem;
+        height: 4.5rem;
+        margin-top: 3.2rem;
+    }
+
+    main .actions a+a {
+        margin-top: 2.8rem;
+    }
+}
+
+/*Login e cadastro*/
+/*////////////////////////////////////////////////////////////////////////////////////////*/
+.content-form{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    border: var(--default-border);
+    border-radius: var(--default-border-radius);
+    padding: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+    background: #FFF;
+}
+
+.login-img{
+
+}
+.login-img img{
+    width: 30rem;
+    height: auto;
+}
+
+.form {
+    display: block;
+    margin-top: 1.6rem;
+    text-indent: 0.5rem;
+    width: 40rem;
+}
+
+.form p{
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.form form label {
+    /*padding-left: 5rem*/
+
+    font-size: 2rem;
+    font-weight: 350;
+    margin-top: 1.6rem;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    color:var(--default-font-color);
+}
+
+.form form input {
+    outline: none;
+    opacity:70%;
+    width: 100%;
+    padding: 2rem;
+    height: 4.5rem;
+    font-size:2rem;
+    text-indent: 0.5rem;
+    background: linear-gradient(to right,#6A5ACD, #EE82EE);
+    border: transparent;
+    border: var(--default-border);
+    border-radius: 1rem;
+    transition: .1s;
+    color: #FFF;
+}
+.form form input:focus{
+    transform:scale(1.05)
+}
+.form .actions-login{
+    display:flex;
+    width: 100%;
+    align-items: center;
+    margin-left: 6rem;
+    text-align: center;
+}
+
+.form .actions-login input {
+    font-size: 2rem;
+    text-decoration: none;
+    background: linear-gradient(to right,#6A5ACD, #EE82EE);
+
+    height: 4rem;
+    width: 50%;
+    border-radius: 1rem;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4.2rem;
+    border:transparent;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+
+    font-weight: bold;
+    cursor:pointer;
+}
+.form .actions-login input:hover{
+    transform: scale(1.1);
+    background: linear-gradient(to right, #6A5ACD, #EE82EE);
+}
+
+.form .recovery{
+    padding: 1rem;
+    width:100%;
+    text-align: right;
+}
+.form .recovery a{
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.form .recovery a:hover{
+
+    text-decoration: underline;
+}
+
+/*Tela de cadastro ////////////////////////////////////////////////////////////*/
+
+.cadastro{
+    display: flex;
+    text-align: right;
+    justify-content: end;
+    padding: 1rem;
+    margin-right: 2rem;
+    color:#6A5ACD;
+    font-size: 1.7rem;
+
+}
+.cadastro a{
+    text-decoration: none;
+}
+.cadastro a:hover {
+    text-decoration: underline;
+    color:#EE82EE;
+}
+
+
+.content-sobre {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    width: 90%;
+    margin-left: 6rem;
+    padding: 3rem;
+    height: auto;
+}
+
+.main-sobre {
+    position: relative;
+    width: 60rem;
+    height: 10rem;
+    border: none;
+    border-radius: var(--default-border-radius);
+}
+
+.main-sobre h1 {
+    text-align: initial;
+    margin-bottom: 3rem;
+    font-size: 4rem;
+    font-weight: 400;
+}
+
+div .texto-sobre p{
+    text-align: justify-all;
+    font-size: 2rem;
+}
+
+
+
+div.display-img div:nth-child(1) {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+
+    margin-bottom: 2rem;
+
+}
+div.display-img div:nth-child(2) {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+
+    margin-bottom: 2rem;
+
+}
+
+p.nome{
+    font-size: 2rem;
+    font-weight: 500;
+    padding: 1rem;
+}
+
+.display-img img {
+
+    max-width: 19rem;
+    height: 100%;
+    border-radius: 100%;
+
+}
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*HEADER-2 */
+
+.head-2, ul{
+    display: flex;
+    overflow: visible;
+    width:100%;
+    height: auto;
+    background: transparent;
+    justify-content: flex-start;
+    padding: 2rem;
+    padding-top: 2rem;
+
+}
+.item1{
+    flex: 0.5;
+}
+.item2{
+    flex: 2;
+}
+.item3{
+    flex: 1;
+}
+.menu-perfil {
+    display: flex;
+    color: #333;
+    align-content: space-between;
+    align-items: center;
+    list-style: none;
+    text-decoration: none;
+    font-size: 2rem;
+    color: #666;
+    font-weight: 300;
+    gap: 3rem;
+
+}
+
+
+.menu-perfil li {
+    list-style: none;
+    position: relative;
+    text-decoration: none;
+    height: auto;
+
+}
+
+
+.menu-perfil a img, button{
+    dislpay:flex;
+    align-items: center;
+    text-align: center;
+    height:7rem;
+    border: none;
+    background: transparent;
+
+
+
+}
+
+.submenu {
+    position: relative;
+    display: inline-block;
+    height: auto;
+
+}
+
+.submenu-conteudo {
+    display: none;
+
+    margin: auto;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 6rem;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding:1rem;
+
+    z-index: 2
+}
+
+.submenu:hover .submenu-conteudo, a {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    width:17rem;
+    font-size: 1.5rem;
+    border-radius: var(--default-border-radius);
+}
+
+.submenu span {
+    display: flex;
+    align-items: center;
+}
+.submenu span img{
+
+    dislpay:flex;
+    align-content: center;
+    width: 100%;
+    height:7rem;
+    border: none;
+    border-radius: 2rem;
+    background: transparent;
+    color: black;
+    padding:1.2rem;
+    text-decoration: none;
+}
+
+.special-li{
+    height: 5rem;
+    border: solid 0.1rem;
+    border-radius: 2rem;
+    padding: 1rem;
+    padding-right: 0;
+
+
+}
+.button-icon{
+    padding-left: 1rem;
+    padding-right: 3rem;
+}
+
+.add-button{
+    height: 4rem;
+    font-size: 1.5rem;
+    border-radius: 3.5rem;
+    background-color: #228B22;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+.add-button i{
+    margin-right: 2rem;
+    color: #fff;
+
+}
+
+.menu-perfil li input{
+    width:100%;
+    font-size: 1.5rem;
+    border: none;
+    border-radius:3.5rem;
+    padding: 1rem;
+    border: solid 0.1rem;
+
+}
+.menu-perfil li input:focus, input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+
+/*TELA DE WORKSPACE*/
+.contatos{
+    border-radius: 10px;
+    border-color: black;
+}
+
+.row{
+    display: inline-block;
+}
+
+.card-body p{
+    font-weight: bold;
+}
+.card-body span{
+    font-weight: normal
+}
