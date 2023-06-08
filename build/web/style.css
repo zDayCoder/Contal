@@ -241,7 +241,7 @@ main header {
     color:var(--default-font-color);
 }
 
-.form form input {
+.form form input, .form form textarea {
     outline: none;
     opacity:70%;
     width: 100%;
@@ -256,7 +256,26 @@ main header {
     transition: .1s;
     color: #FFF;
 }
-.form form input:focus{
+
+.form form textarea{
+    height: auto !important;
+    max-height: calc(3.6em + 2rem); /* Define a altura equivalente a duas linhas */
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando necessário */
+    overflow-x: hidden; /* Oculta a barra de rolagem horizontal */
+    resize: none;
+}
+
+/* Estilizando a barra de rolagem vertical */
+.form form textarea::-webkit-scrollbar {
+  width: 10px; /* Largura da barra de rolagem */
+}
+
+.form form textarea::-webkit-scrollbar-thumb {
+  background-color: #000; /* Cor do thumb (ponteiro) da barra de rolagem */
+  border-radius: 5px; /* Borda arredondada do thumb */
+}
+
+.form form input:focus, .form form textarea:focus {
     transform:scale(1.05)
 }
 .form .actions-login{

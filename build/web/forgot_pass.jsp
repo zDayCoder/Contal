@@ -9,7 +9,7 @@
 
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Acesso Contal</title>
+        <title>Troque sua senha</title>
     </head>
     <body class="body-gradient">
 

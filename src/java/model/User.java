@@ -15,98 +15,98 @@ public class User {
         return "CREATE TABLE IF NOT EXISTS users("
                 + "email VARCHAR(250) UNIQUE NOT NULL PRIMARY KEY,"
                 + "name VARCHAR(200) NOT NULL,"
-                + "passwordHash VARCHAR NOT NULL"
+                + "passwordHash VARCHAR(255) NOT NULL"
                 + ")";
     }
 
     public static boolean checkEmailExists(String email) throws Exception {
-        Connection con = Databases.getConnection();
-        PreparedStatement stmt = con.prepareStatement("SELECT COUNT(*) FROM users WHERE email = ?");
-        stmt.setString(1, email);
-        ResultSet rs = stmt.executeQuery();
-        boolean emailExists = rs.getInt(1) > 0;
-        rs.close();
-        stmt.close();
-        con.close();
+        boolean emailExists;
+        try (Connection con = Databases.getConnection(); PreparedStatement stmt = con.prepareStatement("SELECT COUNT(*) FROM users WHERE email = ?")) {
+            stmt.setString(1, email);
+            try (ResultSet rs = stmt.executeQuery()) {
+                emailExists = rs.getInt(1) > 0;
+                rs.close();
+            }
+            stmt.close();
+            con.close();
+        }
         return emailExists;
+
     }
 
     public static User findUserByEmail(String email) throws Exception {
-        Connection con = Databases.getConnection();
-        PreparedStatement stmt = con.prepareStatement("SELECT name FROM users WHERE email = ?");
-        stmt.setString(1, email);
-        ResultSet rs = stmt.executeQuery();
-
-        if (rs.next()) {
-            String name = rs.getString("name");
-            //String passwordHash = rs.getString("passwordHash");
-            User user = new User(name, email);
-            rs.close();
-            stmt.close();
-            con.close();
-            return user;
+        try (Connection con = Databases.getConnection(); PreparedStatement stmt = con.prepareStatement("SELECT name FROM users WHERE email = ?")) {
+            stmt.setString(1, email);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    String name = rs.getString("name");
+                    //String passwordHash = rs.getString("passwordHash");
+                    User user = new User(name, email);
+                    rs.close();
+                    stmt.close();
+                    con.close();
+                    return user;
+                }
+            }
         }
-
-        rs.close();
-        stmt.close();
-        con.close();
         return null;
     }
 
     public static boolean verifyUser(String email, String password) throws Exception {
-        Connection con = Databases.getConnection();
-        PreparedStatement stmt = con.prepareStatement("SELECT * FROM users WHERE email = ?");
-        stmt.setString(1, email);
-        ResultSet rs = stmt.executeQuery();
-
-        if (rs.next()) {
-            String storedPassword = rs.getString("passwordHash");
-            String hashedPassword = Databases.getMd5Hash(password); // Aplicar o hash MD5 à senha informada pelo usuário
-            boolean passwordMatch = hashedPassword.equals(storedPassword);
-            rs.close();
-            stmt.close();
-            con.close();
-            return passwordMatch;
+        try (Connection con = Databases.getConnection(); PreparedStatement stmt = con.prepareStatement("SELECT * FROM users WHERE email = ?")) {
+            stmt.setString(1, email);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    String storedPassword = rs.getString("passwordHash");
+                    String hashedPassword = Databases.getMd5Hash(password); // Aplicar o hash MD5 à senha informada pelo usuário
+                    boolean passwordMatch = hashedPassword.equals(storedPassword);
+                    rs.close();
+                    stmt.close();
+                    con.close();
+                    return passwordMatch;
+                }
+            }
         }
-
-        rs.close();
-        stmt.close();
-        con.close();
         return false;
     }
 
     public static User getUser(String email, String password) throws Exception {
         User user = null;
-        Connection con = (Connection) Databases.getConnection();
-        String sql = "SELECT rowid, * from users WHERE email=? AND passwordHash=?";
-        PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setString(1, email);
-        stmt.setString(2, Databases.getMd5Hash(password));
-        ResultSet rs = stmt.executeQuery();
-        if (rs.next()) {
-            long rowId = rs.getLong("rowid");
-            String name = rs.getString("name");
-            String email2 = rs.getString("email");
-            String passwordHash = rs.getString("passwordHash");
-            user = new User(rowId, name, email2, passwordHash);
+        try (Connection con = (Connection) Databases.getConnection()) {
+            String sql = "SELECT rowid, * from users WHERE email=? AND passwordHash=?";
+            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+                stmt.setString(1, email);
+                stmt.setString(2, Databases.getMd5Hash(password));
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        long rowId = rs.getLong("rowid");
+                        String name = rs.getString("name");
+                        String email2 = rs.getString("email");
+                        String passwordHash = rs.getString("passwordHash");
+                        user = new User(rowId, name, email2, passwordHash);
+                    }rs.close();
+                    stmt.close();
+                    con.close();
+                }
+            }
         }
-        rs.close();
-        stmt.close();
-        con.close();
         return user;
     }
 
     public static void insertUser(String name, String email, String passwordHash) throws Exception {
-        Connection con = (Connection) Databases.getConnection();
-        String sql = "INSERT INTO users(name, email, passwordHash) "
-                + "VALUES(?,?,?)";
-        PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setString(1, name);
-        stmt.setString(2, email);
-        stmt.setString(3, Databases.getMd5Hash(passwordHash));
-        stmt.execute();
-        stmt.close();
-        con.close();
+        try (Connection con = (Connection) Databases.getConnection()) {
+            String sql = "INSERT INTO users(name, email, passwordHash) "
+                    + "VALUES(?,?,?)";
+            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+                stmt.setString(1, name);
+                stmt.setString(2, email);
+                stmt.setString(3, Databases.getMd5Hash(passwordHash));
+                stmt.execute();
+
+                stmt.close();
+                con.close();
+            }
+        }
     }
 
     /**
@@ -120,14 +120,17 @@ public class User {
      *
      */
     public static void changePassword(String email, String password) throws Exception {
-        Connection con = Databases.getConnection();
-        String sql = "UPDATE users SET passwordHash = ? WHERE email = ?";
-        PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setString(1, Databases.getMd5Hash(password));
-        stmt.setString(2, email);
-        stmt.execute();
-        stmt.close();
-        con.close();
+        try (Connection con = Databases.getConnection()) {
+            String sql = "UPDATE users SET passwordHash = ? WHERE email = ?";
+            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+                stmt.setString(1, Databases.getMd5Hash(password));
+                stmt.setString(2, email);
+                stmt.execute();
+
+                stmt.close();
+                con.close();
+            }
+        }
     }
 
     public User(long rowId, String name, String email, String passwordHash) {

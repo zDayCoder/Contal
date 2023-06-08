@@ -18,7 +18,25 @@ public class ForgotPassword extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("forgot_pass.jsp").forward(request, response);
+        
+        if (request.getSession().getAttribute("user") != null) {
+            User u = (User) request.getSession().getAttribute("user");
+            if (u != null) {
+                try {
+                    if (User.checkEmailExists(u.getEmail())) {
+
+                        request.getSession().setAttribute("user", u);
+
+                        response.sendRedirect("./workspace");
+                    }
+                } catch (Exception e) {
+                    request.setAttribute("error", e.getLocalizedMessage());
+                    request.getRequestDispatcher("error_page.jsp").forward(request, response);
+                }
+            }
+        } else {
+            request.getRequestDispatcher("forgot_pass.jsp").forward(request, response);
+        }
     }
 
     @Override
@@ -61,6 +79,8 @@ public class ForgotPassword extends HttpServlet {
                 s.close();
                 c.close();
             } catch (Exception e) {
+                request.setAttribute("error", e.getLocalizedMessage());
+                request.getRequestDispatcher("error_page.jsp").forward(request, response);
             }
 
         } catch (IOException | ServletException e) {

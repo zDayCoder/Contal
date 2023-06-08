@@ -20,10 +20,10 @@
                 </button></li>
                     
         <li class="item2">
-            <span><input type="text" id="search" placeholder ="Pesquise agora..."></span>
+            <span><form method="post"><input type="text" id="search" name="filter" placeholder ="Pesquise agora..."></form></span>
             
         </li>
-        <li class="item3"><button class="add-button"><i class="fa-solid fa-plus"></i>Adicionar Contato</button></li>
+        <li class="item3"><a href="./new_contact"><button class="add-button"><i class="fa-solid fa-plus"></i>Adicionar Contato</button></a></li>
         <li>            
             <div class="submenu">
                 <span class="special-li"><span class ="button-icon"><i class="fa-solid fa-chevron-down"></i></span>
