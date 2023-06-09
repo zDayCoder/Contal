@@ -4,12 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ryana/Downloads/Fatec-POO/Contal%20-%20Contato%20Digital/src/java/servlets/Workspace.java</file>
-            <file>file:/C:/Users/ryana/Downloads/Fatec-POO/Contal%20-%20Contato%20Digital/web/style.css</file>
             <file>file:/C:/Users/ryana/Downloads/Fatec-POO/Contal%20-%20Contato%20Digital/web/workspace.jsp</file>
             <file>file:/C:/Users/ryana/Downloads/Fatec-POO/Contal%20-%20Contato%20Digital/web/WEB-INF/jspf/header-2.jspf</file>
-            <file>file:/C:/Users/ryana/Downloads/Fatec-POO/Contal%20-%20Contato%20Digital/src/java/services/Databases.java</file>
+            <file>file:/C:/Users/ryana/Downloads/Fatec-POO/Contal%20-%20Contato%20Digital/src/java/servlets/UpdateContact.java</file>
+            <file>file:/C:/Users/ryana/Downloads/Fatec-POO/Contal%20-%20Contato%20Digital/web/update_contact.jsp</file>
+            <file>file:/C:/Users/ryana/Downloads/Fatec-POO/Contal%20-%20Contato%20Digital/src/java/servlets/CreateContact.java</file>
             <file>file:/C:/Users/ryana/Downloads/Fatec-POO/Contal%20-%20Contato%20Digital/web/create_contact.jsp</file>
-            <file>file:/C:/Users/ryana/Downloads/Fatec-POO/Contal%20-%20Contato%20Digital/src/java/model/User.java</file>
             <file>file:/C:/Users/ryana/Downloads/Fatec-POO/Contal%20-%20Contato%20Digital/src/java/model/Contact.java</file>
         </group>
     </open-files>

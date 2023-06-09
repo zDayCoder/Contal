@@ -58,9 +58,9 @@ public class Contact {
     public static Contact findContactByEmail(String email) throws Exception {
         try {
             Connection con = Databases.getConnection();
-            String query = "SELECT * FROM contacts WHERE email = ?";
+            String query = "SELECT * FROM contacts WHERE email LIKE ?";
             PreparedStatement stmt = con.prepareStatement(query);
-            stmt.setString(1, email);
+            stmt.setString(1, "%" + email + "%");
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
@@ -212,38 +212,40 @@ public class Contact {
             // Tratar exceção
         }
     }
-
+    
     public static void deleteContact(String telephone, String userMail) throws Exception {
+        try {
+            Connection con = Databases.getConnection();
 
-        // Deletar o contato pelo telefone
-        try (Connection con = Databases.getConnection()) {
-            // Deletar o contato pelo telefone
-            String deleteQuery = "DELETE FROM contacts WHERE telephone = ? AND user_id = ?";
-            try (PreparedStatement stmt = con.prepareStatement(deleteQuery)) {
-                stmt.setString(1, telephone);
-                stmt.setString(2, userMail);
-                stmt.executeUpdate();
-            }
-
+            // Inserir o novo contato
+            String deleteQuery = "DELETE FROM contacts where telephone = ?";
+            PreparedStatement stmt = con.prepareStatement(deleteQuery);
+            stmt.setString(1, telephone);
+            stmt.execute();
+            stmt.close();
+            con.close();
         } catch (SQLException e) {
             // Tratar exceção
         }
     }
 
-    public static void updateContact(String telephone, String name, String description, String email, String address, String userMail) throws Exception {
+    public static void updateContact(String newtelephone, String oldtelephone, String name, String description, String email, String address, String userMail) throws Exception {
         // Atualizar o contato pelo telefone
         try (Connection con = Databases.getConnection()) {
             // Atualizar o contato pelo telefone
-            String updateQuery = "UPDATE contacts SET name = ?, description = ?, email = ?, address = ? WHERE telephone = ? AND user_id = ?";
+            String updateQuery = "UPDATE contacts SET name = ?, description = ?, email = ?, address = ?, telephone = ? WHERE telephone = ? AND user_id = ?";
             try (PreparedStatement stmt = con.prepareStatement(updateQuery)) {
                 stmt.setString(1, name);
                 stmt.setString(2, description);
                 stmt.setString(3, email);
                 stmt.setString(4, address);
-                stmt.setString(5, telephone);
-                stmt.setString(6, userMail);
+                stmt.setString(5, newtelephone);
+                stmt.setString(6, oldtelephone);
+                stmt.setString(7, userMail);
                 stmt.executeUpdate();
+                stmt.close();
             }
+            con.close();
 
         } catch (SQLException e) {
             // Tratar exceção

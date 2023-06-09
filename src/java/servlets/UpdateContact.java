@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,8 +15,8 @@ import model.Contact;
 import model.User;
 import services.Databases;
 
-@WebServlet(name = "Create a Contact", urlPatterns = {"/new_contact"})
-public class CreateContact extends HttpServlet {
+@WebServlet(name = "Update a Contact", urlPatterns = {"/update_contact"})
+public class UpdateContact extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -27,8 +29,7 @@ public class CreateContact extends HttpServlet {
                     if (User.checkEmailExists(u.getEmail())) {
 
                         request.getSession().setAttribute("user", u);
-
-                        request.getRequestDispatcher("create_contact.jsp").forward(request, response);
+                        request.getRequestDispatcher("update_contact.jsp").forward(request, response);
                     }
                 } catch (Exception e) {
                     request.setAttribute("error", e.getLocalizedMessage());
@@ -64,7 +65,7 @@ public class CreateContact extends HttpServlet {
             request.setAttribute("errors", hash);
 
             if (name.isEmpty() || telephone.isEmpty()) {
-                request.getRequestDispatcher("create_contact.jsp").forward(request, response);
+                request.getRequestDispatcher("update_contact.jsp").forward(request, response);
             }
 
             try {
@@ -74,25 +75,36 @@ public class CreateContact extends HttpServlet {
 
                 if (request.getSession().getAttribute("user") != null) {
                     User u = (User) request.getSession().getAttribute("user");
-                    if (!email.isEmpty()) {
+                    Contact contact = (Contact) request.getSession().getAttribute("updatectt");
+                    String oldTelephone = contact.getTelephone();
+
+                    if (!email.equals(contact.getEmail())) {
                         if (Contact.contactMailExists(email, u.getEmail())) {
+                            System.out.println("invisivel");
                             hash.put("e_email", "Já existe um contato com o mesmo email.");
                         }
-                    }
-                    if (Contact.contactTelephoneExists(telephone, u.getEmail())) {
-                        hash.put("e_telephone", "Já existe um contato com o mesmo telefone.");
+                   }
+
+                    if (!telephone.equals(oldTelephone)) {
+                        if (Contact.contactTelephoneExists(telephone, u.getEmail())) {
+                            hash.put("e_telephone", "Já existe um contato com o mesmo telefone.");
+                        }
                     }
 
-                    if (!Contact.contactTelephoneExists(telephone, u.getEmail()) && !Contact.contactMailExists(email, u.getEmail())) {
+                    
+                    if ((!email.equals(contact.getEmail()) && !Contact.contactMailExists(email, u.getEmail())
+                            || email.equals(contact.getEmail()) && Contact.contactMailExists(email, u.getEmail()))
+                            && (!telephone.equals(oldTelephone) && !Contact.contactTelephoneExists(telephone, u.getEmail()))
+                            || telephone.equals(oldTelephone) && Contact.contactTelephoneExists(telephone, u.getEmail())) {
                         if (email.isEmpty()) {
-                            Contact.insertContact(name, description, telephone, null, address, u.getEmail());
+                            Contact.updateContact(telephone, oldTelephone, name, description, null, address, u.getEmail());
                         } else {
-                            Contact.insertContact(name, description, telephone, email, address, u.getEmail());
+                            Contact.updateContact(telephone, oldTelephone, name, description, email, address, u.getEmail());
                         }
                         response.sendRedirect("./workspace");
                     } else {
                         request.setAttribute("errors", hash);
-                        request.getRequestDispatcher("create_contact.jsp").forward(request, response);
+                        request.getRequestDispatcher("update_contact.jsp").forward(request, response);
                     }
                 }
 

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -84,13 +86,27 @@ public class Workspace extends HttpServlet {
                     request.getRequestDispatcher("error_page.jsp").forward(request, response);
                 }
             }
-            
+
             if (request.getParameter("delete_contact") != null) {
                 deleteupdate = request.getParameter("delete_contact");
-                Contact
+                try {
+                    Contact.deleteContact(deleteupdate, u.getEmail());
+                    response.sendRedirect("./workspace");
+                } catch (Exception e) {
+                    request.setAttribute("error", e.getLocalizedMessage());
+                    request.getRequestDispatcher("error_page.jsp").forward(request, response);
+                }
             }
-            if (request.getParameter("delete_contact") != null) {
-                deleteupdate = request.getParameter("delete_contact");
+            if (request.getParameter("edit_contact") != null) {
+                deleteupdate = request.getParameter("edit_contact");
+                try {
+                    Contact c = Contact.getContactByTelephone(deleteupdate, u.getEmail());
+                    request.getSession().setAttribute("updatectt", c);
+                    response.sendRedirect("./update_contact");
+                } catch (Exception e) {
+                    request.setAttribute("error", e.getLocalizedMessage());
+                    request.getRequestDispatcher("error_page.jsp").forward(request, response);
+                }
             }
             if (request.getParameter("filter") != null) {
                 try {
