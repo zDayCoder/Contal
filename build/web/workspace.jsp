@@ -55,9 +55,11 @@
                             <div class="contato">
                                 <p>Nome: <%=contact.getName()%></p>
                                 <img src="./assets/telefone.png" alt="Telefone">
-                                <%if (!contact.getEmail().isEmpty()) {%>
+                                <%if (contact.getEmail() != null) {
+                                        if (!contact.getEmail().isEmpty()) {%>
                                 <img src="./assets/email.png" alt="E-mail">
-                                <%}%>
+                                <%}
+                                    }%>
                             </div>
                         </div>
                     </form>
@@ -91,26 +93,32 @@
                         </div>
                         <div class="card-body">
 
-                            <%if (!c.getDescription().isEmpty() && c.getDescription() != null) {
-                                    description = c.getDescription();%>
+                            <%if (c.getDescription() != null) {
+                                    if (!c.getDescription().isEmpty()) {
+                                        description = c.getDescription();%>
                             <p>Descrição</p> 
                             <span><%=description%></span>
-                            <%}%>
+                            <%}
+                                }%>
 
                             <p>Telefone</p> 
                             <span><%=telephone%></span>
 
-                            <%if (!c.getEmail().isEmpty() && c.getEmail() != null) {
-                                    email = c.getEmail();%>
+                            <%if (c.getEmail() != null) {
+                                    if (!c.getEmail().isEmpty()) {
+                                        email = c.getEmail();%>
                             <p>E-mail</p>
                             <span><%=email%></span>
-                            <%}%>
+                            <%}
+                                }%>
 
-                            <%if (!c.getAddress().isEmpty() && c.getAddress() != null) {
-                                    address = c.getAddress();%>
+                            <%if (c.getAddress() != null) {
+                                    if (!c.getAddress().isEmpty()) {
+                                        address = c.getAddress();%>
                             <p>Endereço</p> 
                             <span><%=address%></span>
-                            <%}%>
+                            <%}
+                                }%>
 
                         </div>
                     </div>
