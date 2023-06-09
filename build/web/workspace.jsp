@@ -43,7 +43,7 @@
                     if (list != null && !list.isEmpty()) {
             %>
 
-            <div class="row">
+            <div class="row workspace">
                 <div class="col-md-4 contatos">
                     <%for (Contact contact : list) {
                             if (contact != null) {
@@ -75,20 +75,19 @@
                 %>
                 <div class="col-md-8 none-workspace">
 
-                    <div class="card">
+                    <div class="card card-workspace">
                         <div class="card-header">
-                            <%=name%><div>
+                            <%=name%>
 
-                                <form id="editcontact" method="post">
-                                    <input type="hidden" value="<%=c.getTelephone()%>" name="edit_contact"/>
-                                    <img src="./assets/edit.png" alt="Alterar" style="cursor: pointer; padding:8px" onclick="document.getElementById('editcontact').submit()"/>
-                                </form>
+                            <form id="editcontact" method="post">
+                                <input type="hidden" value="<%=c.getTelephone()%>" name="edit_contact"/>
+                                <img src="./assets/edit.png" alt="Alterar" style="cursor: pointer; padding:8px" onclick="document.getElementById('editcontact').submit()"/>
+                            </form>
 
-                                <form id="deletecontact" method="post">
-                                    <input type="hidden" value="<%=c.getTelephone()%>" name="delete_contact"/>
-                                    <img src="./assets/trash.png" alt="Deletar" style="cursor: pointer; padding:8px" onclick="document.getElementById('deletecontact').submit()"/>
-                                </form>
-                            </div>
+                            <form id="deletecontact" method="post">
+                                <input type="hidden" value="<%=c.getTelephone()%>" name="delete_contact"/>
+                                <img src="./assets/trash.png" alt="Deletar" style="cursor: pointer; padding:8px" onclick="document.getElementById('deletecontact').submit()"/>
+                            </form>
                         </div>
                         <div class="card-body">
 
@@ -121,7 +120,7 @@
 
             <%
             } else {%>
-            <h1>Sem nenhum contato por enquanto</h1>
+            <h1>Selecione um contato para visualizar mais informações.</h1>
             <%}
                 }%>
         </div>

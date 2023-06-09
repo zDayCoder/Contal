@@ -87,7 +87,6 @@ public class Workspace extends HttpServlet {
             
             if (request.getParameter("delete_contact") != null) {
                 deleteupdate = request.getParameter("delete_contact");
-                Contact
             }
             if (request.getParameter("delete_contact") != null) {
                 deleteupdate = request.getParameter("delete_contact");

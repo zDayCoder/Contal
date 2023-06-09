@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 
@@ -20,7 +19,6 @@
     overflow: hidden;
     padding: 2.5rem;
     background: transparent;
-
 }
 
 .navbar .menu {
@@ -102,7 +100,6 @@
     max-width: 590px;
     height: auto;
     object-fit: contain;
-
 }
 
 
@@ -206,9 +203,6 @@ main header {
     background: #FFF;
 }
 
-.login-img{
-
-}
 .login-img img{
     width: 30rem;
     height: auto;
@@ -377,8 +371,6 @@ div .texto-sobre p{
     font-size: 2rem;
 }
 
-
-
 div.display-img div:nth-child(1) {
     display:flex;
     align-items: center;
@@ -403,11 +395,9 @@ p.nome{
 }
 
 .display-img img {
-
     max-width: 19rem;
     height: 100%;
     border-radius: 100%;
-
 }
 
 
@@ -423,7 +413,6 @@ p.nome{
     justify-content: flex-start;
     padding: 2rem;
     padding-top: 2rem;
-
 }
 .item1{
     flex: 0.5;
@@ -445,7 +434,6 @@ p.nome{
     color: #666;
     font-weight: 300;
     gap: 3rem;
-
 }
 
 
@@ -454,7 +442,6 @@ p.nome{
     position: relative;
     text-decoration: none;
     height: auto;
-
 }
 
 
@@ -465,16 +452,12 @@ p.nome{
     height:7rem;
     border: none;
     background: transparent;
-
-
-
 }
 
 .submenu {
     position: relative;
     display: inline-block;
     height: auto;
-
 }
 
 .submenu-conteudo {
@@ -579,13 +562,50 @@ p.nome{
     border-color: black;
 }
 
-.row{
+.workspace{
     display: inline-block;
 }
 
-.card-body p{
+.card-body-w p{
     font-weight: bold;
 }
-.card-body span{
+.card-body-w span{
     font-weight: normal
+}
+
+/* TELA DE PERFIL */
+.card-profile{
+    padding: 2%;
+}
+.card-header-p{
+    display:flex;
+    flex-direction: row;
+    padding: 2%;
+}
+.buttonProfile{
+    justify-content: end;
+    width: 20%;
+    height: 15%;
+    position: relative;
+    margin-left: 50%;
+}
+
+.p-profile{
+    font-size: 1.5rem;
+}
+.label-profile{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1%;
+    margin-top: 2%;
+}
+
+.input-profile{
+    font-size: 1.5rem !important;
+    color: pink;
+}
+
+.image-profile{
+    border-radius: 10%;
+    width: 125px;
 }
