@@ -83,7 +83,8 @@ public class User {
                         String email2 = rs.getString("email");
                         String passwordHash = rs.getString("passwordHash");
                         user = new User(rowId, name, email2, passwordHash);
-                    }rs.close();
+                    }
+                    rs.close();
                     stmt.close();
                     con.close();
                 }
@@ -108,16 +109,20 @@ public class User {
         }
     }
 
-    /**
-     * public static void updateUser(String login, String name, String role,
-     * String password) throws Exception{ Connection con =
-     * AppListener.getConnection(); String sql = "UPDATE users SET name=?,
-     * role=?, password_hash=? WHERE login=?"; PreparedStatement stmt =
-     * con.prepareStatement(sql); stmt.setString(1, name); stmt.setString(2,
-     * role); stmt.setString(3, AppListener.getMd5Hash(password));
-     * stmt.setString(4, login); stmt.execute(); stmt.close(); con.close(); }
-     *
-     */
+    public static void updateUser(String name, String password, String email) throws Exception {
+        try (Connection con = Databases.getConnection()) {
+            String sql = "UPDATE users SET name= ?,passwordHash=? WHERE email = ?";
+            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+                stmt.setString(1, name);
+                stmt.setString(2, password);
+                stmt.setString(3, email);
+                stmt.execute();
+                stmt.close();
+            }
+            con.close();
+        }
+    }
+
     public static void changePassword(String email, String password) throws Exception {
         try (Connection con = Databases.getConnection()) {
             String sql = "UPDATE users SET passwordHash = ? WHERE email = ?";
