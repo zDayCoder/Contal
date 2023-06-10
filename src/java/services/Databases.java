@@ -9,8 +9,8 @@ import javax.servlet.ServletContextListener;
 public class Databases implements ServletContextListener {
 
     public static final String CLASS_NAME = "org.sqlite.JDBC";
-    public static final String URL = "jdbc:sqlite:C:/Users/ryana/Downloads/Fatec-POO/Contal - Contato Digital/src/sqlite/contal.db";
-
+    public static final String URL = "jdbc:sqlite:contal.db";
+    
     public static String getMd5Hash(String text) throws NoSuchAlgorithmException {
         MessageDigest m = MessageDigest.getInstance("MD5");
         m.update(text.getBytes(), 0, text.length());
