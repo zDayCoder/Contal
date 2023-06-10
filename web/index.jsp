@@ -18,7 +18,7 @@
 
         <aside class ="aside-index">
             
-            <img src="/Contal/assets/Imagem1.png" alt="logo" class="logo-img">
+            <img src="/Contal/assets/Imagem1.png" alt="logo" class="logo-img" draggable="false">
 
         </aside>
             
