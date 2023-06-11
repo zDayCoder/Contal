@@ -222,7 +222,6 @@ main header {
     max-width: 500px;
     background: rgba(255, 255, 255, 0.8);
 
-
 }
 
 .login-img img{
@@ -237,6 +236,7 @@ main header {
     margin-top: 1.6rem;
     text-indent: 0.5rem;
     width: 40rem;
+
 
 }
 
@@ -373,45 +373,37 @@ a.cadastro-link {
 
 
 /*Tela de cadastro ////////////////////////////////////////////////////////////*/
-
-
-.form .actions-login-cadastro input, .cadastro a {
-    margin-top:2rem;
+.cadastro a{
     font-size: 1.8rem;
     text-decoration: none;
-    background: #6b26e2;
+    background:transparent;
+
+    height: 4rem;
     width: 100%;
+    border-color:#6b26e2;
     border-radius: 1rem;
-    color: #FFF;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    border:transparent;
-    transition: transform 0.3s ease;
-    overflow: hidden;
-    font-weight: 400;
-    cursor:pointer;
-}
-
-.cadastro a{
-    background: transparent;
-    margin: 0px;
-    height: 4rem;
-    border-color:#6b26e2;
     border:solid 0.1rem;
     ;
+    transition: transform 0.3s ease;
+    font-weight: 400;
+    cursor:pointer;
     color:#6b26e2;
 }
-.form .actions-login-cadastro input:hover, .cadastro a:hover{
+.cadastro a:hover{
     transform: scale(1.1);
-}
 
+}
 p.ou{
     font-size: 1.5rem;
     margin: 0;
     margin-top:1rem;
 }
+
+
 
 .content-sobre {
     display: grid;
@@ -471,7 +463,28 @@ p.nome{
     height: 100%;
     border-radius: 100%;
 }
+.form .actions-login-cadastro input {
+    margin-top:2rem;
+    font-size: 1.8rem;
+    text-decoration: none;
+    background: #6b26e2;
+    width: 100%;
+    border-radius: 1rem;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border:transparent;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    font-weight: 400;
+    cursor:pointer;
+}
+.form .actions-login-cadastro input:hover{
+    transform: scale(1.1);
 
+}
 
 /*/////////////////////////////////////////////////////////////////////////////////////*/
 /*HEADER-2 */
@@ -523,6 +536,7 @@ p.nome{
     margin-top: 3.1rem;
 }
 .search-radios .pesquisa {
+
     background-color: transparent;
     border: 0.01rem solid #6a49b2;
 }
@@ -692,9 +706,24 @@ p.nome{
 
 
 /*TELA DE WORKSPACE*/
-.contatos{
-    border-radius: 10px;
-    border-color: black;
+.contato{
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    height: 50px;
+    padding: 3%;
+}
+
+.contato-icons{
+    width: 20px;
+    height: 20px;
+    margin-left: 30%;
+    display: flex;
+
+}
+
+.contato img{
+    margin-left: 50%;
 }
 
 .workspace{
@@ -707,6 +736,47 @@ p.nome{
 .card-body-w span{
     font-weight: normal
 }
+
+.p-workspace{
+    padding-bottom: 0;
+    padding-top: 3%;
+    font-weight: bold;
+}
+
+.span-workspace{
+    padding-top: 0;
+    font-size: 1.5rem;
+}
+
+.icon-contact{
+    cursor: pointer;
+    width: 7%;
+}
+
+.header-workspace{
+    display: flex;
+    flex-direction: row;
+}
+
+.card-workspace{
+    margin-left: 10%;
+}
+
+#span-header-workspace{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#h1-workspace{
+    text-align: center;
+    margin-top: 15%;
+}
+
+.icons-contact{
+    display: flex;
+
+}
+
 /*Criando contato*/
 .content-form-cadastro{
     display: flex;
@@ -761,76 +831,6 @@ p.nome{
 .image-profile{
     border-radius: 10%;
     width: 125px;
-}
-
-
-/*TELA DE WORKSPACE*/
-.contato{
-    background-color: white;
-    cursor: pointer;
-    display: flex;
-    height: 50px;
-    padding: 3%;
-}
-
-.contato-icons{
-    width: 20px;
-    height: 20px;
-    margin-left: 30%;
-    display: flex;
-
-}
-
-.contato img{
-    margin-left: 50%;
-}
-
-.workspace{
-    display: inline-block;
-}
-.card-body-w p{
-    font-weight: bold;
-}
-.card-body-w span{
-    font-weight: normal
-}
-
-.p-workspace{
-    padding-bottom: 0;
-    padding-top: 3%;
-    font-weight: bold;
-}
-
-.span-workspace{
-    padding-top: 0;
-    font-size: 1.5rem;
-}
-
-.icon-contact{
-    cursor: pointer;
-    width: 7%;
-}
-
-.header-workspace{
-    display: flex;
-}
-
-.card-workspace{
-    margin-left: 10%;
-}
-
-#span-header-workspace{
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-#h1-workspace{
-    text-align: center;
-    margin-top: 15%;
-}
-
-.icons-contact{
-    margin-left: auto;
 }
 
 #mostrarFotos{

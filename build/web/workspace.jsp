@@ -19,21 +19,16 @@
             <%
                 if (request.getSession().getAttribute("user") != null) {
                     User u = (User) request.getSession().getAttribute("user");
-                    String filterType = "";
                     List<Contact> list = new ArrayList<>();
 
-                    if (request.getParameter("filterType") != null) {
-                        filterType = request.getParameter("filterType");
-
-                        if (filterType.equals("t_email")) {
-                            if (request.getAttribute("findContact") != null) {
+                    if (request.getAttribute("findContact") != null) {
+                        if (request.getAttribute("findType") != null) {
+                            if (request.getAttribute("findType").equals("phone")) {
+                                list = (List) request.getAttribute("findContact");
+                            } else {
                                 Contact c = (Contact) request.getAttribute("findContact");
                                 list.add(c);
                             }
-                        } else if (filterType.equals("t_phone")) {
-                            list = (List) request.getAttribute("findContact");
-                        } else {
-                            list = Contact.getAllContacts(u.getEmail());
                         }
                     } else {
                         list = Contact.getAllContacts(u.getEmail());
@@ -49,7 +44,7 @@
                             if (contact != null) {
                                 increment++;
                     %>
-                    <form id="contactform<%=increment%>" method="post" style="width: auto;">
+                    <form id="contactform<%=increment%>" method="post" style="width: 100%">
                         <input type="hidden" value="<%=contact.getTelephone()%>" name="view_contact"/>
                         <div class="row" onclick="document.getElementById('contactform<%=increment%>').submit()">
                             <div class="contato">
@@ -83,7 +78,7 @@
                     <div class="card card-workspace">
                         <div class="card-header bg-transparent header-workspace">
                             <span id="span-header-workspace"><%=name%></span>
-                            <div class="icons-contact" style="justify-content: flex-end;">
+                            <div class="icons-contact">
                                 <form id="editcontact" method="post">
                                     <input type="hidden" value="<%=c.getTelephone()%>" name="edit_contact"/>
                                     <img class="icon-contact" src="./assets/edit.png" alt="Alterar" onclick="document.getElementById('editcontact').submit()"/>
