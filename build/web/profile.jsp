@@ -30,14 +30,16 @@
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col">
-                    <div class="card card-profile" id="divprofile">
+                    <div class="card card-profile">
                         <div class="card-header-p">
                             <h1>Meus Dados</h1>
-                            <button type="button" onclick="document.getElementById('sendUpdate').submit()" class="btn btn-success buttonProfile alt">Alterar</button>
+                            <button type="button" onclick="document.getElementById('updateForm').submit()" class="btn btn-success buttonProfile alt">Alterar</button>
                         </div>
                         <hr>
-                        <div  class="card-body card-body-p">
-                            <form id="sendUpdate" method="post">
+                        <div class="card-body card-body-p">
+                            <form id="updateForm" method="post">
+
+
                                 <label class="label-profile">Nome</label>
                                 <input required name="name" value="<%=name%>" type="text" class="form-control input-profile"/>
                                 <label class="label-profile">Atualizar senha</label>
@@ -48,21 +50,17 @@
 
                             </form>
 
-                            <button onclick="showPhotoOptions()" style="border: 1px solid gray; margin-top: 10px">Mostrar Fotos</button>
-                            <div id="photoOptions" class="mt-3" style="display: none;">
-                                <center>
-                                    <img class="input-profile" style="border-radius:10%;width: 125px" src="./assets/usuario1.png" name="photoOption" value="./assets/usuario1.png" onclick="showImage(this)">
-                                    <img class="input-profile" style="border-radius:10%;width: 125px" src="./assets/usuario2.png" name="photoOption" value="./assets/usuario2.png" onclick="showImage(this)">
-                                    <img class="input-profile" style="border-radius:10%;width: 125px" src="./assets/usuario3.png" name="photoOption" value="./assets/usuario3.png" onclick="showImage(this)">
-                                    <img class="input-profile" style="border-radius:10%;width: 125px" src="./assets/usuario4.png" name="photoOption" value="./assets/usuario4.png" onclick="showImage(this)">
-                                </center>
+                            <button id="mostrarFotos" onclick="showPhotoOptions()" >Mostrar Fotos</button>
+                            <div id="photoOptions" style="display: none;">
+                                <img class="input-profile" style="border-radius:10%;width: 125px" src="./assets/usuario1.png" name="photoOption" value="./assets/usuario1.png" onclick="showImage(this)">
+                                <img class="input-profile" style="border-radius:10%;width: 125px" src="./assets/usuario2.png" name="photoOption" value="./assets/usuario2.png" onclick="showImage(this)">
+                                <img class="input-profile" style="border-radius:10%;width: 125px" src="./assets/usuario3.png" name="photoOption" value="./assets/usuario3.png" onclick="showImage(this)">
+                                <img class="input-profile" style="border-radius:10%;width: 125px" src="./assets/usuario4.png" name="photoOption" value="./assets/usuario4.png" onclick="showImage(this)">
                             </div>
 
                             <script>
                                 function showPhotoOptions() {
                                     const photoOptions = document.getElementById("photoOptions");
-                                    const divprofile = document.getElementById("divprofile");
-                                    divprofile.style.marginBottom = "20px";
                                     photoOptions.style.display = "block";
                                 }
 
