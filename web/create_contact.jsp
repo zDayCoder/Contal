@@ -4,17 +4,22 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+
 <!DOCTYPE html>
 <html>
     <head>
-
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700&display=swap"
+              rel="stylesheet">
+        <script src="https://kit.fontawesome.com/5b3bb07e17.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Criar novo contato</title>
     </head>
     <body class="body-gradient">
 
-        <div class="content-form" style="margin-top: 60px">
+        <div class="content-form-cadastro" style="margin-top: 60px">
 
             <main class="form">
                 <header>
@@ -53,7 +58,7 @@
                     <% } %>
 
                     <label for="input-address">Endereço</label>
-                    <input type="text" id="input-address" name="address">
+                    <input type="text" id="input-address" name="address" class="endereco">
                     <% if (errors.get("e_address") != null) {%>
                     <p><%= errors.get("e_address")%></p>
                     <% }%>

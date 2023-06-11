@@ -15,9 +15,7 @@
     </head>
     <body class="body-gradient">
 
-        <p class="cadastro">
-            <a href="./login" >Já é cadastrado? <br>Faça login agora!</a>
-        </p>
+       
         <div class="content-form">
 
             <main class="form">
@@ -57,12 +55,15 @@
                         }
                     %>
 
-                    <div class="actions-login" >
+                    <div class="actions-login-cadastro" >
                         <input type="submit" value="Cadastrar">
                     </div>
 
                 </form>
-
+                    <p class="ou">Ou</p>
+                <p class="cadastro">
+                    <a href="./login" > Faça login agora!</a>
+                </p>
             </main>
         </div>
     </body>

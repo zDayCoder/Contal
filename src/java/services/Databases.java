@@ -19,6 +19,9 @@ public class Databases implements ServletContextListener {
 
     public static Connection getConnection() throws Exception {
         Class.forName(CLASS_NAME);
-        return (Connection) DriverManager.getConnection(URL);
+        Connection connection = DriverManager.getConnection(URL);
+        return connection;
+
     }
+
 }

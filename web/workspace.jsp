@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.User"%>
 <%@page import="java.util.List"%>
 <%@page import="model.Contact"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,57 +17,120 @@
 
         <div class="container">
             <%
-                List<Contact> list = Contact.getAllContacts();
-                String name = "", description = "", telephone = "", email = "", address = "";
-                if (list != null && !list.isEmpty()) {
+                if (request.getSession().getAttribute("user") != null) {
+                    User u = (User) request.getSession().getAttribute("user");
+                    String filterType = "";
+                    List<Contact> list = new ArrayList<>();
+
+                    if (request.getParameter("filterType") != null) {
+                        filterType = request.getParameter("filterType");
+
+                        if (filterType.equals("t_email")) {
+                            if (request.getAttribute("findContact") != null) {
+                                Contact c = (Contact) request.getAttribute("findContact");
+                                list.add(c);
+                            }
+                        } else if (filterType.equals("t_phone")) {
+                            list = (List) request.getAttribute("findContact");
+                        } else {
+                            list = Contact.getAllContacts(u.getEmail());
+                        }
+                    } else {
+                        list = Contact.getAllContacts(u.getEmail());
+                    }
+
+                    int increment = 0;
+                    if (list != null && !list.isEmpty()) {
             %>
 
-            <div class="row">
+            <div class="row workspace">
                 <div class="col-md-4 contatos">
-                    <div class="row">
-                        <button class="button">Recentes</button>
-                        <button class="button">Favoritos</button> 
-                    </div>
-                    <%for (Contact contact : list) {%>
-                    <div class="row" style="cursor: grab">
-                        <div class="contato">
-                            <input class="form-check-input" type="checkbox"/>
-                            <p>Nome: <%=contact.getName()%></p>
-                            <p>Telefone: <%=contact.getTelephone()%>
+                    <%for (Contact contact : list) {
+                            if (contact != null) {
+                                increment++;
+                    %>
+                    <form id="contactform<%=increment%>" method="post">
+                        <input type="hidden" value="<%=contact.getTelephone()%>" name="view_contact"/>
+                        <div class="row" style="cursor: pointer; background: #ccc;padding:8px" onclick="document.getElementById('contactform<%=increment%>').submit()">
+                            <div class="contato">
+                                <p>Nome: <%=contact.getName()%></p>
                                 <img src="./assets/telefone.png" alt="Telefone">
-                            </p>
-                            <p>E-mail: <%=contact.getEmail()%>
+                                <%if (contact.getEmail() != null) {
+                                        if (!contact.getEmail().isEmpty()) {%>
                                 <img src="./assets/email.png" alt="E-mail">
-                            </p>
-                             <span>Trabalho</span>
+                                <%}
+                                    }%>
+                            </div>
                         </div>
-                    </div>
-                    <%}%>
+                    </form>
+                    <%
+                            }
+                        }%>
                 </div>
+                <%
+
+                    if (request.getAttribute("selected_contact") != null) {
+                        Contact c = (Contact) request.getAttribute("selected_contact");
+                        String name = "", description = "", telephone = "", email = "", address = "";
+                        name = c.getName();
+                        telephone = c.getTelephone();
+                %>
                 <div class="col-md-8 none-workspace">
-                    <!--<h1 class="none-workspace">Selecione um contato para visualizar mais informações.</h1>-->
-                    <div class="card">
+
+                    <div class="card card-workspace">
                         <div class="card-header">
-                            Alice Silva <button class="button">Trabalho</button> <img src="./assets/opcoes.png" alt="Mais Opções" >
+                            <%=name%>
+
+                            <form id="editcontact" method="post">
+                                <input type="hidden" value="<%=c.getTelephone()%>" name="edit_contact"/>
+                                <img src="./assets/edit.png" alt="Alterar" style="cursor: pointer; padding:8px" onclick="document.getElementById('editcontact').submit()"/>
+                            </form>
+
+                            <form id="deletecontact" method="post">
+                                <input type="hidden" value="<%=c.getTelephone()%>" name="delete_contact"/>
+                                <img src="./assets/trash.png" alt="Deletar" style="cursor: pointer; padding:8px" onclick="document.getElementById('deletecontact').submit()"/>
+                            </form>
                         </div>
                         <div class="card-body">
 
+                            <%if (c.getDescription() != null) {
+                                    if (!c.getDescription().isEmpty()) {
+                                        description = c.getDescription();%>
                             <p>Descrição</p> 
                             <span><%=description%></span>
+                            <%}
+                                }%>
 
-                            <p>Telefone <span>(13) 3434-3434</span></p>
-                            <p>Celular <span>(13) 3434-3434</span></p>
-                            <p>E-mail <span>alicesilva@email.com</span></p>
-                            <p>Endereço</p>
-                            <span>Praça 19 de Janeiro, 144 - Boqueirão, Praia Grande - SP 11700-100</span>
+                            <p>Telefone</p> 
+                            <span><%=telephone%></span>
+
+                            <%if (c.getEmail() != null) {
+                                    if (!c.getEmail().isEmpty()) {
+                                        email = c.getEmail();%>
+                            <p>E-mail</p>
+                            <span><%=email%></span>
+                            <%}
+                                }%>
+
+                            <%if (c.getAddress() != null) {
+                                    if (!c.getAddress().isEmpty()) {
+                                        address = c.getAddress();%>
+                            <p>Endereço</p> 
+                            <span><%=address%></span>
+                            <%}
+                                }%>
+
                         </div>
                     </div>
                 </div>
+                <%}%>
             </div>
 
-            <%} else {%>
-            <h1>Sem nenhum contato por enquanto</h1>
-            <%}%>
+            <%
+            } else {%>
+            <h1>Selecione um contato para visualizar mais informações.</h1>
+            <%}
+                }%>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

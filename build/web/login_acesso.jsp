@@ -13,10 +13,7 @@
     </head>
     <body class="body-gradient">
 
-        <p class="cadastro">
-            <a href="./cadastro" >
-                Não tem conta? <br>Cadastre-se agora!</a>
-        </p>
+      
         <div class="content-form">
 
             <main class="form">
@@ -44,20 +41,23 @@
                         if (errors.get("e_password") != null) {%>
                         <p><%=errors.get("e_password")%></p> <%
                         }
-                    %>
-                    <p class="recovery"><a href="./forgot_pass">Esqueci minha senha</a></p>
-                    <%
+                        %>
+                        <p class="recovery"><a href="./forgot_pass">Esqueci minha senha</a></p>
+                        <%
                         if (errors.get("e_nouser") != null) {%>
-                    <p><%=errors.get("e_nouser")%></p> <%
-                        }
-                    %>
-                    <div class="actions-login" >
-                        <input type="submit" value="Entrar">
+                        <p><%=errors.get("e_nouser")%></p> <%
+                            }
+                        %>
+                        <div class="actions-login" >
+                            <input type="submit" value="Entrar">
 
-                    </div>
+                        </div>
 
                 </form>
-
+                     <p class="ou">Ou</p>
+                    <a href="./cadastro"  class="cadastro-link">
+                        Cadastre-se!</a>
+                
             </main>
 
         </div>

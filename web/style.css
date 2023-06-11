@@ -14,51 +14,50 @@
 }
 
 /*Header1 /////////////////////////////////////////////////////////////////////////////*/
-.navbar {
+.navbar-1 {
     display: flex;
     justify-content: space-between;
     overflow: hidden;
     padding: 2.5rem;
+/*<<<<<<< HEAD
     
 
+=======
+    background: transparent;
+>>>>>>> 169a98672866a4c0719048ba583d8d7c17825f23*/
 }
 
-.navbar .menu {
+.navbar-1 .menu {
     display: flex;
-    color: #333;
     align-items: center;
     text-align: center;
     list-style: none;
-    text-decoration: none;
-    
-    color: #666;
-    
-   
-    font-weight:400;
-}
-.navbar .menu li{
-    padding: 1.5rem;
+    }
+.navbar-1 .menu li{
+    padding: 0rem;
     margin-left: 4rem;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 0.4rem;
     transition: transform 0.3s ease;
-    
+    cursor:pointer;
 }
-.navbar .menu a{
+.navbar-1 .menu a{
     display:block;
     padding: 1rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
     color:var(--default-font-color);
-    font-size: 2.5rem !important;
-
+    font-size: 2rem !important;
+    text-decoration: none;
 }
-.navbar .menu a, li:hover{
+.navbar-1 .menu li:hover{
     
-    transform: scale(1.1);
+    transform: scale(1.2);
     animation-delay: 0.5s;
     color: #6A5ACD;
 }
 
-.navbar .logo img, button {
+.navbar-1 .logo img, button {
     width: 100%;
     height:7rem;
     border: none;
@@ -72,15 +71,16 @@
     background: linear-gradient(to top, rgba(230, 222, 246, 1) 5%, rgba(250, 249, 253, 1) 37%, rgba(249, 251, 251, 1) 45%, rgba(238, 234, 250, 1) 87%);
     font-family: Roboto;
     font-size: 1.4rem;
-    overflow: hidden;
-    background-repeat: no-repeat;
+    background-size: auto;
+    height: 100%;
+
 
 }
 .body-index {
     background: linear-gradient(to top, rgba(230, 222, 246, 1) 5%, rgba(250, 249, 253, 1) 37%, rgba(249, 251, 251, 1) 45%, rgba(238, 234, 250, 1) 87%);
     font-family: Roboto;
     font-size: 1.4rem;
-    overflow: hidden;
+    
 }
 
 .content {
@@ -118,7 +118,7 @@
     max-width: 590px;
     height: auto;
     object-fit: contain;
-    
+
 }
 
 
@@ -210,9 +210,9 @@ main header {
 /*Login e cadastro*/
 /*////////////////////////////////////////////////////////////////////////////////////////*/
 .content-form{
-    
     display: flex;
     flex-flow: column;
+    align-content: center;
     align-items: center;
     border: var(--default-border);
     border-radius: var(--default-border-radius);
@@ -220,43 +220,44 @@ main header {
     margin-left: auto;
     margin-right: auto;
     max-width: 500px;
-      background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.8);
     
 }
 
-.login-img{
-
-}
 .login-img img{
     width: 30rem;
     height: auto;
 }
 
-.form {
+.form, form{
     
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin-top: 1.6rem;
     text-indent: 0.5rem;
     width: 40rem;
+    
+    
 }
 
 .form p{
     width: 100%;
     text-align: center;
-    padding: 1rem;
+    color:var(--default-font-color);
     font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .form form label {
     /*padding-left: 5rem*/
-
     font-size: 2rem;
     font-weight: 350;
     margin-top: 1.6rem;
     margin-bottom: 1rem;
     text-transform: capitalize;
     display: flex;
-    align-items: center;
+    text-align: start;
     color:var(--default-font-color);
 }
 
@@ -264,70 +265,69 @@ main header {
     outline: none;
     opacity:70%;
     width: 100%;
-    padding: 2rem;
     height: 4.5rem;
+    justify-content: center;
     font-size:2rem;
+    align-content: center;
+    text-align: start;
     text-indent: 0.5rem;
-    background: linear-gradient(to right,#6A5ACD, #EE82EE);
-    border: transparent;
-    border: var(--default-border);
+    background: transparent;
+    border: solid 0.1rem;
     border-radius: 1rem;
+    border-color:#6b26e2; 
     transition: .1s;
-    color: #FFF;
+    color: #000;
 }
 
 .form form textarea{
     height: auto !important;
-    max-height: calc(3.6em + 2rem); /* Define a altura equivalente a duas linhas */
-    overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando necessário */
-    overflow-x: hidden; /* Oculta a barra de rolagem horizontal */
+    max-height: calc(3.6em + 2rem); 
+    overflow-y: auto; 
+    overflow-x: hidden; 
     resize: none;
 }
 
 /* Estilizando a barra de rolagem vertical */
 .form form textarea::-webkit-scrollbar {
-  width: 10px; /* Largura da barra de rolagem */
+    width: 10px; /* Largura da barra de rolagem */
 }
 
 .form form textarea::-webkit-scrollbar-thumb {
-  background-color: #000; /* Cor do thumb (ponteiro) da barra de rolagem */
-  border-radius: 5px; /* Borda arredondada do thumb */
+    background-color: #000; /* Cor do thumb (ponteiro) da barra de rolagem */
+    border-radius: 5px; /* Borda arredondada do thumb */
 }
 
 .form form input:focus, .form form textarea:focus {
     transform:scale(1.05)
 }
 .form .actions-login{
-    display:flex;
+    
+    justify-content: center;
     width: 100%;
-    align-items: center;
-    margin-left: 6rem;
-    text-align: center;
+     display: flex;
+     justify-content: center;
 }
 
 .form .actions-login input {
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-decoration: none;
-    background: linear-gradient(to right,#6A5ACD, #EE82EE);
-
-    height: 4rem;
-    width: 50%;
+    background: #6b26e2;
+    width: 100%;
     border-radius: 1rem;
     color: #FFF;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 4.2rem;
+    text-align: center;
     border:transparent;
     transition: transform 0.3s ease;
     overflow: hidden;
-
-    font-weight: bold;
+    font-weight: 400;
     cursor:pointer;
 }
 .form .actions-login input:hover{
     transform: scale(1.1);
-    background: linear-gradient(to right, #6A5ACD, #EE82EE);
+    
 }
 
 .form .recovery{
@@ -344,26 +344,63 @@ main header {
 
     text-decoration: underline;
 }
+    a.cadastro-link {
+    font-size: 2rem;
+    text-decoration: none;
+    background:transparent;
+    margin-top: 1rem;
+    height: 4rem;
+    width: 100%;
+    border-color:#6b26e2;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border:solid 0.1rem;;
+    transition: transform 0.3s ease;
+    font-weight: 400;
+    cursor:pointer;
+    color:#6b26e2;
+}
+
+
+.cadastro-link:hover{
+    transform: scale(1.1);
+    
+}
+
 
 /*Tela de cadastro ////////////////////////////////////////////////////////////*/
-
-.cadastro{
-    display: flex;
-    text-align: right;
-    justify-content: end;
-    padding: 1rem;
-    margin-right: 2rem;
-    color:#6A5ACD;
-    font-size: 1.7rem;
-
-}
 .cadastro a{
+    font-size: 1.8rem;
     text-decoration: none;
+    background:transparent;
+    
+    height: 4rem;
+    width: 100%;
+    border-color:#6b26e2;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border:solid 0.1rem;;
+    transition: transform 0.3s ease;
+    font-weight: 400;
+    cursor:pointer;
+    color:#6b26e2;
 }
-.cadastro a:hover {
-    text-decoration: underline;
-    color:#EE82EE;
+.cadastro a:hover{
+    transform: scale(1.1);
+    
 }
+p.ou{
+    font-size: 1.5rem;
+    margin: 0;
+    margin-top:1rem;
+}
+
 
 
 .content-sobre {
@@ -396,8 +433,6 @@ div .texto-sobre p{
     font-size: 2rem;
 }
 
-
-
 div.display-img div:nth-child(1) {
     display:flex;
     align-items: center;
@@ -422,13 +457,32 @@ p.nome{
 }
 
 .display-img img {
-
     max-width: 19rem;
     height: 100%;
     border-radius: 100%;
-
 }
-
+.form .actions-login-cadastro input {
+    margin-top:2rem;
+    font-size: 1.8rem;
+    text-decoration: none;
+    background: #6b26e2;
+    width: 100%;
+    border-radius: 1rem;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border:transparent;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    font-weight: 400;
+    cursor:pointer;
+}
+.form .actions-login-cadastro input:hover{
+    transform: scale(1.1);
+    
+}
 
 /*/////////////////////////////////////////////////////////////////////////////////////*/
 /*HEADER-2 */
@@ -440,9 +494,9 @@ p.nome{
     height: auto;
     background: transparent;
     justify-content: flex-start;
-    padding: 2rem;
-    padding-top: 2rem;
-
+    padding-right: 2rem;
+    padding-left: 2rem;
+    padding-top: 0;
 }
 .item1{
     flex: 0.5;
@@ -463,59 +517,93 @@ p.nome{
     font-size: 2rem;
     color: #666;
     font-weight: 300;
-    gap: 3rem;
-
+    gap: 4rem;
 }
 
 
 .menu-perfil li {
+    
+    
     list-style: none;
     position: relative;
     text-decoration: none;
     height: auto;
-
+    justify-content: center;
+}
+.menu-perfil .item2{
+    margin-top: 3.1rem;
+}
+.search-radios .pesquisa {
+    
+    background-color: transparent;
+    border: 0.01rem solid #6a49b2;
+}
+.search-radios .pesquisa:focus{
+    transform: scale(1.1);
+    transition: 0.50s;
+    background-color: #EEE;
 }
 
 
 .menu-perfil a img, button{
-    dislpay:flex;
+  
     align-items: center;
     text-align: center;
     height:7rem;
     border: none;
     background: transparent;
-
-
-
 }
 
 .submenu {
     position: relative;
     display: inline-block;
     height: auto;
-
 }
 
 .submenu-conteudo {
-    display: none;
-
-    margin: auto;
+    display:none;
+    margin-right: 2rem;;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 6rem;
+    padding: 0.1rem;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding:1rem;
-
+       
     z-index: 2
 }
-
-.submenu:hover .submenu-conteudo, a {
-    display: block;
-    padding: 1rem;
-    text-decoration: none;
-    width:17rem;
+.submenu-conteudo form{
+    width: 100%;
+    margin:0;
+    padding:0;
+        
+}
+.submenu-conteudo form button{
     font-size: 1.5rem;
+    width:90%;
+    margin:1rem;
+    align-content: start;
+    text-align: center;
+    justify-content: center;
+  
+}
+
+
+.submenu:hover .submenu-conteudo {
+  
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
     border-radius: var(--default-border-radius);
+    overflow: hidden;
+}
+
+.submenu-conteudo li form:hover button{
+    transition: .25s;
+    background: #6a49b2;
+    color: white;
+    border-radius: var(--default-border-radius);
+}
+.submenu-conteudo li{
+    padding: 0.1rem;
 }
 
 .submenu span {
@@ -524,7 +612,7 @@ p.nome{
 }
 .submenu span img{
 
-    dislpay:flex;
+    display:flex;
     align-content: center;
     width: 100%;
     height:7rem;
@@ -542,6 +630,7 @@ p.nome{
     border-radius: 2rem;
     padding: 1rem;
     padding-right: 0;
+    cursor:pointer;
 
 
 }
@@ -551,19 +640,25 @@ p.nome{
 }
 
 .add-button{
-    height: 4rem;
-    font-size: 1.5rem;
+    height: 4.7rem;
+    width: 90%;
+    text-align: center;
     border-radius: 3.5rem;
-    background-color: #228B22;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    background-color: #6A5ACD;
+    padding-left: 1rem;
+    padding-right: 1rem;
     color: #fff;
     cursor: pointer;
 }
 .add-button i{
-    margin-right: 2rem;
+    margin-left: 0rem;
+    margin-right: 1rem;
     color: #fff;
 
+}
+.add-button:hover{
+    transform: scale(1.1);
+    transition: 0.50s;
 }
 
 .menu-perfil li input{
@@ -575,9 +670,35 @@ p.nome{
     border: solid 0.1rem;
 
 }
+
 .menu-perfil li input:focus, input:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
+}
+.filter-btn{
+    margin: 1rem;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    color: #666;
+    
+}
+.filter-btn input[type="radio"]{
+    margin-left: 0.6rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #ccc;
+    -webkit-appearance: none;
+    border: 2px solid #999;
+    border-radius: 50%;
+    position: relative;
+    top: 0.7rem;
+    cursor: pointer;
+}
+.filter-btn input[type="radio"]:checked{
+   
+    transition: 0.50s;
+    background-color: #6A5ACD;
+    
 }
 
 
@@ -587,13 +708,68 @@ p.nome{
     border-color: black;
 }
 
-.row{
+.workspace{
     display: inline-block;
 }
 
-.card-body p{
+.card-body-w p{
     font-weight: bold;
 }
-.card-body span{
+.card-body-w span{
     font-weight: normal
+}
+/*Criando contato*/
+.content-form-cadastro{
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    align-items: center;
+    border: var(--default-border);
+    border-radius: var(--default-border-radius);
+    padding-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4rem;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.8);
+}
+.endereco{
+    margin-bottom: 2.6rem;
+}
+
+/* TELA DE PERFIL */
+.card-profile{
+    padding: 2%;
+}
+.card-header-p{
+    display:flex;
+    flex-direction: row;
+    padding: 2%;
+}
+.buttonProfile{
+    justify-content: end;
+    width: 20%;
+    height: 15%;
+    position: relative;
+    margin-left: 50%;
+}
+
+.p-profile{
+    font-size: 1.5rem;
+}
+.label-profile{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1%;
+    margin-top: 2%;
+}
+
+.input-profile{
+    font-size: 1.5rem !important;
+    color: pink;
+}
+
+.image-profile{
+    border-radius: 10%;
+    width: 125px;
 }
