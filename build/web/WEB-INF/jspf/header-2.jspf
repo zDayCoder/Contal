@@ -58,7 +58,7 @@
                         <img src="./assets/usuario2.jpg" alt="alt"/></span> 
                     <ul class="submenu-conteudo">
                         <li><form  method="post"><button value="profile" name="menu">Perfil</button></form></li>
-                        <li><form method="post"><button value="settings" name="menu">Configurações</button></form></li>
+                        
                         <li><form method="post"><button value="logout" name="menu">Sair</button></form></li>
                     </ul>
 
