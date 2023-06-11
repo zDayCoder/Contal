@@ -51,14 +51,12 @@
 
                             </form>
 
-                            <button onclick="showPhotoOptions()" style="border: 1px solid gray; margin: 0px">Mostrar Fotos</button>
-                            <div id="photoOptions" class="mt-3" style="display: none;">
-                                <center>
+                            <button id="mostrarFotos" onclick="showPhotoOptions()" >Mostrar Fotos</button>
+                            <div id="photoOptions" style="display: none;">
                                 <img class="input-profile" style="border-radius:10%;width: 125px" src="./assets/usuario1.png" name="photoOption" value="./assets/usuario1.png" onclick="showImage(this)">
                                 <img class="input-profile" style="border-radius:10%;width: 125px" src="./assets/usuario2.jpg" name="photoOption" value="./assets/usuario2.jpg" onclick="showImage(this)">
                                 <img class="input-profile" style="border-radius:10%;width: 125px" src="./assets/usuario3.png" name="photoOption" value="./assets/usuario3.png" onclick="showImage(this)">
-                                <img class="input-profile" style="border-radius:10%;width: 125px" src="./assets/usuario4.png" name="photoOption" value="./assets/usuario4.png" onclick="showImage(this)">
-                                </center>
+                                <!--<img class="input-profile" style="border-radius:10%;width: 125px" src="./assets/usuario4.png" name="photoOption" value="./assets/usuario4.png" onclick="showImage(this)">-->
                             </div>
 
                             <script>
