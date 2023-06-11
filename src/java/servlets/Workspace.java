@@ -46,7 +46,7 @@ public class Workspace extends HttpServlet {
             throws ServletException, IOException {
         if (request.getSession().getAttribute("user") != null) {
             User u = (User) request.getSession().getAttribute("user");
-            String filter = "", filterType = "", view_contact = "", deleteupdate;
+            String filter = "", view_contact = "", deleteupdate;
             if (request.getParameter("menu") != null) {
                 switch (request.getParameter("menu")) {
                     case "profile" -> {
@@ -73,7 +73,7 @@ public class Workspace extends HttpServlet {
                             request.getRequestDispatcher("workspace.jsp").forward(request, response);
                         }
                         request.setAttribute("selected_contact", cont);
-                        s.close();
+                        s.close(); 
                         c.close();
                         request.getRequestDispatcher("workspace.jsp").forward(request, response);
                     } catch (Exception e) {
@@ -118,26 +118,6 @@ public class Workspace extends HttpServlet {
                             request.setAttribute("findContact", c);
                             request.getRequestDispatcher("workspace.jsp").forward(request, response);
                         }
-                        /*
-                        filterType = request.getParameter("filterType");
-                        switch (filterType) {
-                            case "t_email" -> {
-                                Contact c = Contact.findContactByEmail(filter);
-                                request.setAttribute("findType", filterType);
-                                request.setAttribute("findContact", c);
-                                request.getRequestDispatcher("workspace.jsp").forward(request, response);
-                            }
-                            case "t_phone" -> {
-                                List<Contact> c = Contact.searchContactsByPhone(filter, u.getEmail());
-                                request.setAttribute("findType", filterType);
-                                request.setAttribute("findContact", c);
-                                request.getRequestDispatcher("workspace.jsp").forward(request, response);
-                            }
-                            default -> {
-                                request.setAttribute("error", "Pesquisa inválida");
-                                request.getRequestDispatcher("error_page.jsp").forward(request, response);
-                            }
-                        }*/
                     } catch (Exception e) {
                         request.setAttribute("error", e.getLocalizedMessage());
                         request.getRequestDispatcher("error_page.jsp").forward(request, response);
