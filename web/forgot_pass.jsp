@@ -13,10 +13,7 @@
     </head>
     <body class="body-gradient">
 
-        <p class="cadastro">
-            <a href="./cadastro" >
-                Não tem conta? <br>Cadastre-se agora!</a>
-        </p>
+        
         <div class="content-form">
 
             <main class="form">
@@ -51,14 +48,17 @@
                         }
                     %>
                     
-                    <div class="actions-login" >
+                    <div class="actions-login-2" >
                         <input type="submit" value="Recuperar">
 
                     </div>
 
                 </form>
 
-
+                <p class="cadastro">
+                    <a href="./cadastro" >
+                        Cadastre-se!</a>
+                </p>
 
             </main>
 

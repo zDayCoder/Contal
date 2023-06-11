@@ -21,28 +21,14 @@
                 </button></li>
 
             <li class="item2">
-                <!--<span><form method="post"><input type="text" id="search" name="filter" placeholder ="Buscar por e-mail ou por telefone"></form></span>-->
-                
-                    <form method="post">
-                        <div class="search-radios">
-                             <input type="text" id="searchInput" name="filter" placeholder="Digite o email ou número de telefone" class="pesquisa">
-                             
-                            <label class="filter-btn">
-                                E-Mail
-                                <input type="radio" name="filterType" value="t_email" checked>
-                                
-                            </label>
-                            <label class="filter-btn">
-                                Telefone
-                                <input type="radio" name="filterType" value="t_phone">
-                                
-                            </label>
-                        </div>
 
-                       
-                    </form>
-                
-                
+                <form method="post">
+                    <div class="search-radios">
+                        <input type="text" id="searchInput" name="filter" placeholder="Busque seus contatos por e-mail ou número de telefone" class="pesquisa">
+                    </div>
+                </form>
+
+
             </li>
             <li class="item3"><a href="./new_contact"><button class="add-button"><i class="fa-solid fa-plus"></i>Adicionar Contato</button></a></li>
             <li>            
@@ -55,14 +41,14 @@
                             %>
                             <%=firstName%>
                             <%}%>
-                        <img src="./assets/usuario2.jpg" alt="alt"/></span> 
+                        <img src="./assets/usuario2.png" alt="alt"/></span> 
                     <ul class="submenu-conteudo">
                         <li><form  method="post"><button value="profile" name="menu">Perfil</button></form></li>
-                        
+
                         <li><form method="post"><button value="logout" name="menu">Sair</button></form></li>
                     </ul>
 
-                    
+
                 </div>
             </li>    
         </ul>

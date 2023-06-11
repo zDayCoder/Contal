@@ -19,21 +19,16 @@
             <%
                 if (request.getSession().getAttribute("user") != null) {
                     User u = (User) request.getSession().getAttribute("user");
-                    String filterType = "";
                     List<Contact> list = new ArrayList<>();
 
-                    if (request.getParameter("filterType") != null) {
-                        filterType = request.getParameter("filterType");
-
-                        if (filterType.equals("t_email")) {
-                            if (request.getAttribute("findContact") != null) {
+                    if (request.getAttribute("findContact") != null) {
+                        if (request.getAttribute("findType") != null) {
+                            if (request.getAttribute("findType").equals("phone")) {
+                                list = (List) request.getAttribute("findContact");
+                            } else {
                                 Contact c = (Contact) request.getAttribute("findContact");
                                 list.add(c);
                             }
-                        } else if (filterType.equals("t_phone")) {
-                            list = (List) request.getAttribute("findContact");
-                        } else {
-                            list = Contact.getAllContacts(u.getEmail());
                         }
                     } else {
                         list = Contact.getAllContacts(u.getEmail());
@@ -44,20 +39,22 @@
             %>
 
             <div class="row workspace">
-                <div class="col-md-4 contatos">
+                <div class="col-md-3 contatos">
                     <%for (Contact contact : list) {
                             if (contact != null) {
                                 increment++;
                     %>
-                    <form id="contactform<%=increment%>" method="post">
+                    <form id="contactform<%=increment%>" method="post" style="width: 100%">
                         <input type="hidden" value="<%=contact.getTelephone()%>" name="view_contact"/>
-                        <div class="row" style="cursor: pointer; background: #ccc;padding:8px" onclick="document.getElementById('contactform<%=increment%>').submit()">
+                        <div class="row" onclick="document.getElementById('contactform<%=increment%>').submit()">
                             <div class="contato">
-                                <p>Nome: <%=contact.getName()%></p>
-                                <img src="./assets/telefone.png" alt="Telefone">
-                                <%if (contact.getEmail() != null) {
-                                        if (!contact.getEmail().isEmpty()) {%>
-                                <img src="./assets/email.png" alt="E-mail">
+                                <p><%=contact.getName()%></p>
+                                <div class="contato-icons">
+                                    <img src="./assets/telefone.png" alt="Telefone">
+                                    <%if (contact.getEmail() != null) {
+                                            if (!contact.getEmail().isEmpty()) {%>
+                                    <img src="./assets/email.png" alt="E-mail">
+                                </div>
                                 <%}
                                     }%>
                             </div>
@@ -67,6 +64,7 @@
                             }
                         }%>
                 </div>
+                <div class="col-md-1"></div>
                 <%
 
                     if (request.getAttribute("selected_contact") != null) {
@@ -78,45 +76,46 @@
                 <div class="col-md-8 none-workspace">
 
                     <div class="card card-workspace">
-                        <div class="card-header">
-                            <%=name%>
+                        <div class="card-header bg-transparent header-workspace">
+                            <span id="span-header-workspace"><%=name%></span>
+                            <div class="icons-contact">
+                                <form id="editcontact" method="post">
+                                    <input type="hidden" value="<%=c.getTelephone()%>" name="edit_contact"/>
+                                    <img class="icon-contact" src="./assets/edit.png" alt="Alterar" onclick="document.getElementById('editcontact').submit()"/>
+                                </form>
 
-                            <form id="editcontact" method="post">
-                                <input type="hidden" value="<%=c.getTelephone()%>" name="edit_contact"/>
-                                <img src="./assets/edit.png" alt="Alterar" style="cursor: pointer; padding:8px" onclick="document.getElementById('editcontact').submit()"/>
-                            </form>
-
-                            <form id="deletecontact" method="post">
-                                <input type="hidden" value="<%=c.getTelephone()%>" name="delete_contact"/>
-                                <img src="./assets/trash.png" alt="Deletar" style="cursor: pointer; padding:8px" onclick="document.getElementById('deletecontact').submit()"/>
-                            </form>
+                                <form id="deletecontact" method="post">
+                                    <input type="hidden" value="<%=c.getTelephone()%>" name="delete_contact"/>
+                                    <img class="icon-contact" src="./assets/trash.png" alt="Deletar" onclick="document.getElementById('deletecontact').submit()"/>
+                                </form>
+                            </div>
                         </div>
                         <div class="card-body">
 
                             <%if (c.getDescription() != null) {
                                     if (!c.getDescription().isEmpty()) {
                                         description = c.getDescription();%>
-                            <p>Descrição</p> 
-                            <span><%=description%></span>
+                            <p class="p-workspace">Descrição</p> 
+                            <span class="span-workspace"><%=description%></span>
                             <%}
                                 }%>
 
-                            <p>Telefone</p> 
-                            <span><%=telephone%></span>
+                            <p class="p-workspace">Telefone</p> 
+                            <span class="span-workspace"><%=telephone%></span>
 
                             <%if (c.getEmail() != null) {
                                     if (!c.getEmail().isEmpty()) {
                                         email = c.getEmail();%>
-                            <p>E-mail</p>
-                            <span><%=email%></span>
+                            <p class="p-workspace">E-mail</p>
+                            <span class="span-workspace"><%=email%></span>
                             <%}
                                 }%>
 
                             <%if (c.getAddress() != null) {
                                     if (!c.getAddress().isEmpty()) {
                                         address = c.getAddress();%>
-                            <p>Endereço</p> 
-                            <span><%=address%></span>
+                            <p class="p-workspace">Endereço</p> 
+                            <span class="span-workspace"><%=address%></span>
                             <%}
                                 }%>
 
@@ -128,7 +127,7 @@
 
             <%
             } else {%>
-            <h1>Selecione um contato para visualizar mais informações.</h1>
+            <h1 id="h1-workspace">Selecione um contato para visualizar mais informações.</h1>
             <%}
                 }%>
         </div>

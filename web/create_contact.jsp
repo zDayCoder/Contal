@@ -1,4 +1,4 @@
-
+<%@include file ="WEB-INF/jspf/header-3.jspf"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -19,7 +19,7 @@
     </head>
     <body class="body-gradient">
 
-        <div class="content-form-cadastro" style="margin-top: 60px">
+        <div class="content-form-cadastro">
 
             <main class="form">
                 <header>

@@ -19,12 +19,12 @@
     justify-content: space-between;
     overflow: hidden;
     padding: 2.5rem;
-/*<<<<<<< HEAD
+    /*<<<<<<< HEAD
+        
     
-
-=======
-    background: transparent;
->>>>>>> 169a98672866a4c0719048ba583d8d7c17825f23*/
+    =======
+        background: transparent;
+    >>>>>>> 169a98672866a4c0719048ba583d8d7c17825f23*/
 }
 
 .navbar-1 .menu {
@@ -32,7 +32,7 @@
     align-items: center;
     text-align: center;
     list-style: none;
-    }
+}
 .navbar-1 .menu li{
     padding: 0rem;
     margin-left: 4rem;
@@ -51,7 +51,7 @@
     text-decoration: none;
 }
 .navbar-1 .menu li:hover{
-    
+
     transform: scale(1.2);
     animation-delay: 0.5s;
     color: #6A5ACD;
@@ -62,12 +62,12 @@
     height:7rem;
     border: none;
     background: transparent;
-    
+
 }
 
 /*Index page ////////////////////////////////////////////////////////////////////////*/
 .body-gradient{
-   
+
     background: linear-gradient(to top, rgba(230, 222, 246, 1) 5%, rgba(250, 249, 253, 1) 37%, rgba(249, 251, 251, 1) 45%, rgba(238, 234, 250, 1) 87%);
     font-family: Roboto;
     font-size: 1.4rem;
@@ -80,7 +80,7 @@
     background: linear-gradient(to top, rgba(230, 222, 246, 1) 5%, rgba(250, 249, 253, 1) 37%, rgba(249, 251, 251, 1) 45%, rgba(238, 234, 250, 1) 87%);
     font-family: Roboto;
     font-size: 1.4rem;
-    
+
 }
 
 .content {
@@ -221,7 +221,7 @@ main header {
     margin-right: auto;
     max-width: 500px;
     background: rgba(255, 255, 255, 0.8);
-    
+
 }
 
 .login-img img{
@@ -230,14 +230,14 @@ main header {
 }
 
 .form, form{
-    
+
     display: flex;
     flex-direction: column;
     margin-top: 1.6rem;
     text-indent: 0.5rem;
     width: 40rem;
-    
-    
+
+
 }
 
 .form p{
@@ -274,16 +274,16 @@ main header {
     background: transparent;
     border: solid 0.1rem;
     border-radius: 1rem;
-    border-color:#6b26e2; 
+    border-color:#6b26e2;
     transition: .1s;
     color: #000;
 }
 
 .form form textarea{
     height: auto !important;
-    max-height: calc(3.6em + 2rem); 
-    overflow-y: auto; 
-    overflow-x: hidden; 
+    max-height: calc(3.6em + 2rem);
+    overflow-y: auto;
+    overflow-x: hidden;
     resize: none;
 }
 
@@ -301,11 +301,11 @@ main header {
     transform:scale(1.05)
 }
 .form .actions-login{
-    
+
     justify-content: center;
     width: 100%;
-     display: flex;
-     justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .form .actions-login input {
@@ -327,7 +327,7 @@ main header {
 }
 .form .actions-login input:hover{
     transform: scale(1.1);
-    
+
 }
 
 .form .recovery{
@@ -344,7 +344,7 @@ main header {
 
     text-decoration: underline;
 }
-    a.cadastro-link {
+a.cadastro-link {
     font-size: 2rem;
     text-decoration: none;
     background:transparent;
@@ -357,7 +357,8 @@ main header {
     justify-content: center;
     align-items: center;
     text-align: center;
-    border:solid 0.1rem;;
+    border:solid 0.1rem;
+    ;
     transition: transform 0.3s ease;
     font-weight: 400;
     cursor:pointer;
@@ -367,7 +368,7 @@ main header {
 
 .cadastro-link:hover{
     transform: scale(1.1);
-    
+
 }
 
 
@@ -376,7 +377,7 @@ main header {
     font-size: 1.8rem;
     text-decoration: none;
     background:transparent;
-    
+
     height: 4rem;
     width: 100%;
     border-color:#6b26e2;
@@ -385,7 +386,8 @@ main header {
     justify-content: center;
     align-items: center;
     text-align: center;
-    border:solid 0.1rem;;
+    border:solid 0.1rem;
+    ;
     transition: transform 0.3s ease;
     font-weight: 400;
     cursor:pointer;
@@ -393,7 +395,7 @@ main header {
 }
 .cadastro a:hover{
     transform: scale(1.1);
-    
+
 }
 p.ou{
     font-size: 1.5rem;
@@ -481,7 +483,7 @@ p.nome{
 }
 .form .actions-login-cadastro input:hover{
     transform: scale(1.1);
-    
+
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////*/
@@ -522,8 +524,8 @@ p.nome{
 
 
 .menu-perfil li {
-    
-    
+
+
     list-style: none;
     position: relative;
     text-decoration: none;
@@ -534,7 +536,7 @@ p.nome{
     margin-top: 3.1rem;
 }
 .search-radios .pesquisa {
-    
+
     background-color: transparent;
     border: 0.01rem solid #6a49b2;
 }
@@ -546,7 +548,7 @@ p.nome{
 
 
 .menu-perfil a img, button{
-  
+
     align-items: center;
     text-align: center;
     height:7rem;
@@ -562,19 +564,20 @@ p.nome{
 
 .submenu-conteudo {
     display:none;
-    margin-right: 2rem;;
+    margin-right: 2rem;
+    ;
     position: absolute;
     background-color: #f9f9f9;
     padding: 0.1rem;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-       
+
     z-index: 2
 }
 .submenu-conteudo form{
     width: 100%;
     margin:0;
     padding:0;
-        
+
 }
 .submenu-conteudo form button{
     font-size: 1.5rem;
@@ -583,12 +586,12 @@ p.nome{
     align-content: start;
     text-align: center;
     justify-content: center;
-  
+
 }
 
 
 .submenu:hover .submenu-conteudo {
-  
+
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -680,7 +683,7 @@ p.nome{
     margin-left: 1rem;
     font-size: 1.5rem;
     color: #666;
-    
+
 }
 .filter-btn input[type="radio"]{
     margin-left: 0.6rem;
@@ -695,17 +698,32 @@ p.nome{
     cursor: pointer;
 }
 .filter-btn input[type="radio"]:checked{
-   
+
     transition: 0.50s;
     background-color: #6A5ACD;
-    
+
 }
 
 
 /*TELA DE WORKSPACE*/
-.contatos{
-    border-radius: 10px;
-    border-color: black;
+.contato{
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    height: 50px;
+    padding: 3%;
+}
+
+.contato-icons{
+    width: 20px;
+    height: 20px;
+    margin-left: 30%;
+    display: flex;
+
+}
+
+.contato img{
+    margin-left: 50%;
 }
 
 .workspace{
@@ -718,6 +736,47 @@ p.nome{
 .card-body-w span{
     font-weight: normal
 }
+
+.p-workspace{
+    padding-bottom: 0;
+    padding-top: 3%;
+    font-weight: bold;
+}
+
+.span-workspace{
+    padding-top: 0;
+    font-size: 1.5rem;
+}
+
+.icon-contact{
+    cursor: pointer;
+    width: 7%;
+}
+
+.header-workspace{
+    display: flex;
+    flex-direction: row;
+}
+
+.card-workspace{
+    margin-left: 10%;
+}
+
+#span-header-workspace{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#h1-workspace{
+    text-align: center;
+    margin-top: 15%;
+}
+
+.icons-contact{
+    display: flex;
+
+}
+
 /*Criando contato*/
 .content-form-cadastro{
     display: flex;
@@ -772,4 +831,82 @@ p.nome{
 .image-profile{
     border-radius: 10%;
     width: 125px;
+}
+
+#mostrarFotos{
+    border: 1px solid gray;
+    margin-top: 1%;
+    width: 25%;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    height: 30px;
+}
+
+/*Header-3*/
+
+.navbar-3{
+    display: flex;
+    flex-direction: initial;
+    }
+
+    .menu-perfil3{
+        padding: 0rem;
+        margin-left: 4rem;
+        margin-top: 2rem;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 2rem;
+        transition: transform 0.3s ease;
+        cursor:pointer;
+        list-style: none;
+        width: 100%;
+        
+    }
+    .menu-perfil3 li button a{
+        display:block;
+        
+        padding: 2rem;
+        
+        color:var(--default-font-color);
+        font-size: 2rem !important;
+        text-decoration: none;
+        
+    }
+    .menu-perfil3:hover{
+        transform: scale(1.1);
+        transition: 0.50s;
+    }
+    
+    .head-3{
+        display: flex;
+    }
+    /*Forgot_pass*/
+    .form .actions-login-2{
+
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form .actions-login-2 input {
+    margin-top: 1.5rem;
+    font-size: 1.8rem;
+    text-decoration: none;
+    background: #6b26e2;
+    width: 100%;
+    border-radius: 1rem;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border:transparent;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    font-weight: 400;
+    cursor:pointer;
+}
+.form .actions-login-2 input:hover{
+    transform: scale(1.1);
+
 }

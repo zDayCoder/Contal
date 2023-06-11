@@ -16,7 +16,7 @@
     </head>
     <body class="body-gradient">
 
-        <div class="content-form" style="margin-top: 60px">
+        <div class="content-form" style="margin-top: 30px;margin-bottom: 20px">
 
             <main class="form">
                 <header>
@@ -91,7 +91,7 @@
                     <p><%= errors.get("e_address")%></p>
                     <% }%>
 
-                    <div class="actions-login">
+                    <div class="actions-login-cadastro">
                         <input type="submit" value="Atualizar Contato">
                     </div>
                     <%}

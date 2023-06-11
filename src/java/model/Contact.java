@@ -55,12 +55,16 @@ public class Contact {
         return contacts;
     }
 
-    public static Contact findContactByEmail(String email) throws Exception {
+    public static Contact findContact(String filter, String userMail) throws Exception {
         try {
             Connection con = Databases.getConnection();
-            String query = "SELECT * FROM contacts WHERE email LIKE ?";
+            System.out.println("VERDADE LINDA");
+            String query = "SELECT * FROM contacts WHERE user_id = ? AND email LIKE ? OR user_id = ? AND telephone LIKE ?";
             PreparedStatement stmt = con.prepareStatement(query);
-            stmt.setString(1, "%" + email + "%");
+            stmt.setString(1, userMail);
+            stmt.setString(2, "%" + filter + "%");
+            stmt.setString(3, userMail);
+            stmt.setString(4, "%" + filter + "%");
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
@@ -212,7 +216,7 @@ public class Contact {
             // Tratar exceção
         }
     }
-    
+
     public static void deleteContact(String telephone, String userMail) throws Exception {
         try {
             Connection con = Databases.getConnection();
