@@ -22,18 +22,15 @@
                     String filterType = "";
                     List<Contact> list = new ArrayList<>();
 
-                    if (request.getParameter("filterType") != null) {
-                        filterType = request.getParameter("filterType");
-
-                        if (filterType.equals("t_email")) {
-                            if (request.getAttribute("findContact") != null) {
+                    if (request.getAttribute("findContact") != null) {
+                        if (request.getAttribute("findType") != null) {
+                            if (request.getAttribute("findType").equals("phone")) {
+                                list = (List) request.getAttribute("findContact");
+                            } else {
+                                System.out.println("puxa por tudo");
                                 Contact c = (Contact) request.getAttribute("findContact");
                                 list.add(c);
                             }
-                        } else if (filterType.equals("t_phone")) {
-                            list = (List) request.getAttribute("findContact");
-                        } else {
-                            list = Contact.getAllContacts(u.getEmail());
                         }
                     } else {
                         list = Contact.getAllContacts(u.getEmail());

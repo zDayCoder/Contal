@@ -31,8 +31,8 @@
                     <label for="input-email">E-mail </label>
                     <input required type="email" id="input-email" name="email" >
                     <%
-                        if (errors.get("e_name") != null) {%>
-                        <p><%=errors.get("e_name")%></p> <%
+                        if (errors.get("e_email") != null) {%>
+                        <p><%=errors.get("e_email")%></p> <%
                         }
                     %>
                     <label for="input-password">Senha </label>

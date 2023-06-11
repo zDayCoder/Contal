@@ -12,7 +12,7 @@
     <title>Contal Sua Agenda Digital</title>
 </head>     
 
-<body class="body-index">
+<body class="body-index" style="position: fixed">
     
     <div class="content">
 

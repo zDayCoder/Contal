@@ -16,7 +16,7 @@
     <body class="body-gradient">
 
        
-        <div class="content-form">
+        <div class="content-form"  >
 
             <main class="form">
                 <header>
@@ -62,7 +62,7 @@
                 </form>
                     <p class="ou">Ou</p>
                 <p class="cadastro">
-                    <a href="./login" > Faça login agora!</a>
+                    <a href="./login" >Faça login agora!</a>
                 </p>
             </main>
         </div>
