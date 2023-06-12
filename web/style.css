@@ -826,6 +826,8 @@ p.nome{
 .input-profile{
     font-size: 1.5rem !important;
     color: pink;
+    border-radius:10%;
+    width: 125px
 }
 
 .image-profile{
@@ -840,6 +842,10 @@ p.nome{
     font-size: 1.3rem;
     border-radius: 10px;
     height: 30px;
+}
+
+#photoOptions{
+    display: none;
 }
 
 /*Header-3*/
