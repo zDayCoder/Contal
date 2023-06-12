@@ -27,10 +27,10 @@
             <h2>Sua agenda virtual</h2>
             <div class="actions">
                 
-                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                     standard dummy text ever since the 1500s</p>
+                 <p> Automatize seus contatos na agenda virtual da Contal.</p>
+                 <p> Seus contatos de forma prática, acessível e integrada. <br></p>
+                 <p> Armazenamento de dados, configurações personalizadas, segurança das informações<br>
+                     tudo em uma só plataformao. </p>
                
                  <a href="./login">Acesse Agora</a>
             </div>

@@ -17,12 +17,13 @@
 
 
 
-                    <p >Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s<br>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s<br>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s<br></p>
+                    <p > Contal sua agenda de contatos virtual.  </p><br>
+
+                    <p>  Somos uma plataforma inteligente na gestão de contatos virtuais projetada para<br> 
+                         simplificar a vida dos usuários que visam inovar necessidades básicas do cotidiano<br> 
+                         de forma acessível e intuitiva permitindo conectar pessoas, de modo a facilitar a<br>
+                         organização do tempo, segurança das informações, espaço ilimitado, notificações<br> 
+                         personalizadas, armazenamento, atualização e compartilhamento de dados.  </p>
                     
                 </div>
 
