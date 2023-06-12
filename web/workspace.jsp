@@ -81,12 +81,12 @@
                             <div class="icons-contact">
                                 <form id="editcontact" method="post">
                                     <input type="hidden" value="<%=c.getTelephone()%>" name="edit_contact"/>
-                                    <img class="icon-contact" src="./assets/edit.png" alt="Alterar" onclick="document.getElementById('editcontact').submit()"/>
+                                    <img class="icon-contact icon-edit" src="./assets/edit.png" alt="Alterar" onclick="document.getElementById('editcontact').submit()"/>
                                 </form>
 
                                 <form id="deletecontact" method="post">
                                     <input type="hidden" value="<%=c.getTelephone()%>" name="delete_contact"/>
-                                    <img class="icon-contact" src="./assets/trash.png" alt="Deletar" onclick="document.getElementById('deletecontact').submit()"/>
+                                    <img class="icon-contact icon-trash" src="./assets/trash.png" alt="Deletar" onclick="document.getElementById('deletecontact').submit()"/>
                                 </form>
                             </div>
                         </div>

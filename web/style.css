@@ -848,45 +848,56 @@ p.nome{
     display: none;
 }
 
+.icons-contact form{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.icon-edit{
+
+}
+
 /*Header-3*/
 
 .navbar-3{
     display: flex;
     flex-direction: initial;
-    }
+}
 
-    .menu-perfil3{
-        padding: 0rem;
-        margin-left: 4rem;
-        margin-top: 2rem;
-        background: rgba(255, 255, 255, 0.8);
-        border-radius: 2rem;
-        transition: transform 0.3s ease;
-        cursor:pointer;
-        list-style: none;
-        width: 100%;
-        
-    }
-    .menu-perfil3 li button a{
-        display:block;
-        
-        padding: 2rem;
-        
-        color:var(--default-font-color);
-        font-size: 2rem !important;
-        text-decoration: none;
-        
-    }
-    .menu-perfil3:hover{
-        transform: scale(1.1);
-        transition: 0.50s;
-    }
-    
-    .head-3{
-        display: flex;
-    }
-    /*Forgot_pass*/
-    .form .actions-login-2{
+.menu-perfil3{
+    padding: 0rem;
+    margin-left: 4rem;
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2rem;
+    transition: transform 0.3s ease;
+    cursor:pointer;
+    list-style: none;
+    width: 100%;
+
+}
+.menu-perfil3 li button a{
+    display:block;
+
+    padding: 2rem;
+
+    color:var(--default-font-color);
+    font-size: 2rem !important;
+    text-decoration: none;
+
+}
+.menu-perfil3:hover{
+    transform: scale(1.1);
+    transition: 0.50s;
+}
+
+.head-3{
+    display: flex;
+}
+/*Forgot_pass*/
+.form .actions-login-2{
 
     justify-content: center;
     width: 100%;
